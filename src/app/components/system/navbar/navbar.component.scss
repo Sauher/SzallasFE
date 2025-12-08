@@ -1,0 +1,43 @@
+.navbar-nav {
+    margin: 0 auto;
+    background-color: var(--main-bg-color);
+    border-radius:  0 0 50px 50px;
+    padding: 10px 50px ;
+}
+
+nav{
+    padding: 0;
+
+}
+
+.nav-item{
+    margin: 0 15px;
+    font-weight: bold;
+}
+
+.nav-link{
+    color: var(--main-font-color) !important;
+}
+.navbar-toggler{
+    border: none !important;
+   margin: 0 auto;
+   background-color: var(--main-bg-color);
+   color: var(--main-font-color);
+   padding-top: 0px;
+   width: 10%;
+   border-radius: 0px 0px 20px 20px;
+}
+
+.navbar-toggler:focus,
+.navbar-toggler:active,
+.navbar-toggler:focus-visible {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+
+.container-fluid{
+    background-color: var(--main-font-color);
+}
+
+

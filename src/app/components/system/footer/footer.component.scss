@@ -1,0 +1,20 @@
+.footDiv{
+    background-color: var(--main-bg-color);
+    color: var(--main-font-color);
+    padding: 10px 0;
+    width: 100%;
+}
+
+
+.bal{
+    text-align: left;
+    margin-left: 20px;
+    font-size: 14px;
+    width: 15%;
+}
+
+logoImg{
+    margin-right: 10px;
+    border-radius: 5px;
+    filter: invert(0.2);
+}

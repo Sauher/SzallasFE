@@ -1,1 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+
+:root{
+    --main-font-color: #ecfdfd;
+    --main-bg-color: #34424d;
+}
+
+//font main color:  #ecfdfd;
+//background color: #34424d; 
+
+
+body{
+    padding: 0;
+    background-color: var(--main-font-color);
+}
+
