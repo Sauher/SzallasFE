@@ -3,36 +3,36 @@
     <hr>
     <form>
         <div class="mb-3">
-            <input type="text" class="form-control" id="regName" aria-describedby="name" placeholder="Teljes név"
+            <input type="text" class="form-control" id="regName" aria-describedby="name" placeholder="Teljes név" name="fullname" [(ngModel)]="newUser.name"
                 required>
         </div>
         <div class="mb-3">
-            <input type="email" class="form-control" id="regEmail" aria-describedby="emailHelp" placeholder="Email"
+            <input type="email" class="form-control" id="regEmail" aria-describedby="emailHelp" name="email" placeholder="Email" [(ngModel)]="newUser.email"
                 required>
         </div>
         <div class="mb-3">
             <hr>
-            <input type="password" class="form-control" id="regPw" placeholder="Jelszó" required>
+            <input type="password" class="form-control" id="regPw" placeholder="Jelszó" name="password" [(ngModel)]="newUser.password" required>
         </div>
         <div class="mb-3">
-            <input type="password" class="form-control" id="regPw" placeholder="Jelszó mégegyszer" required>
+            <input type="password" class="form-control" id="regPw" placeholder="Jelszó mégegyszer" name="confirm" [(ngModel)]="newUser.confirm" required>
         </div>
         <div class="mb-3">
             <div class="optionalSection text-center">
                 <hr>
                 <h6>Opcionális mezők</h6>
             </div>
-            <input type="tel" class="form-control" id="regPhone" placeholder="Telefonszám"
+            <input type="tel" class="form-control" id="regPhone" name="phone" [(ngModel)]="newUser.phone" placeholder="Telefonszám"
                 pattern="[0-9]{2}-[0-9]{3}-[0-9]{4}">
         </div>
         <div class="mb-3">
-            <input type="text" class="form-control" id="regAddress" placeholder="Lakcím">
+            <input type="text" class="form-control" id="regAddress" name="address" [(ngModel)]="newUser.address" placeholder="Lakcím">
         </div>
         <div class="mb-3 form-check">
-            <input type="checkbox" class="form-check-input" id="rememberMe">
+            <input type="checkbox" class="form-check-input" value="" id="rememberMe" name="TAS" [(ngModel)]="acceptTerms">
             <label class="form-check-label" for="rememberMe">Elfogadom a feltételeket <em
                     class="text-danger">*</em></label>
         </div>
-        <button class="btn btn-primary">Regisztráció</button>
+        <button class="btn btn-primary" (click)="register()" name="acceptTerms">Regisztráció</button>
     </form>
 </div>
