@@ -7,13 +7,13 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 
-export class ApiService {
+export class APIService {
 
   SERVER = environment.serverUrl;
 
   constructor() { }
 
-  async registration(table: string, data: any){
+  async Registration(table: string, data: any){
     try{
       const response = await axios.post(`${this.SERVER}/${table}/registration`, data);
       return {
@@ -29,7 +29,7 @@ export class ApiService {
     }
   }
 
-  async login(table: string, data: any){
+  async Login(table: string, data: any){
     try{
       const response = await axios.post(`${this.SERVER}/${table}/login`, data);
       return {
@@ -45,7 +45,7 @@ export class ApiService {
     }
   }
 
-  async upload(formData: FormData): Promise<ApiResponse>{
+  async Upload(formData: FormData): Promise<ApiResponse>{
     try{
       const response = await axios.post(`${this.SERVER}/upload`, formData);
       return {
@@ -77,7 +77,7 @@ export class ApiService {
 
   // GET ALL record from 'table'  -> GET http://localhost:3000/users
 
-  async selectAll(table: string):Promise<ApiResponse>{
+  async SelectAll(table: string):Promise<ApiResponse>{
     try{
       const response = await axios.get(`${this.SERVER}/${table}`);
       return {
@@ -94,7 +94,7 @@ export class ApiService {
 
   // GET ONE record from 'table' by 'id'  -> GET http://localhost:3000/users/5
 
-  async select(table: string, id: number):Promise<ApiResponse>{
+  async Select(table: string, id: number):Promise<ApiResponse>{
     try{
       const response = await axios.get(`${this.SERVER}/${table}/${id}`);
       return {
@@ -111,7 +111,7 @@ export class ApiService {
 
   // POST new record to 'table'  -> POST http://localhost:3000/users
 
-  async insert(table: string, data: any){
+  async Insert(table: string, data: any){
     try{
       const response = await axios.post(`${this.SERVER}/${table}`, data);
       return {
@@ -129,7 +129,7 @@ export class ApiService {
 
   // UPDATE record from 'table' by 'id'  -> PATCH http://localhost:3000/users/5
 
-  async update(table:string, id: number, data:any){
+  async Update(table:string, id: number, data:any){
     try{
       const response = await axios.patch(`${this.SERVER}/${table}/${id}`, data);
       return {
@@ -147,7 +147,7 @@ export class ApiService {
 
   // DELETE ONE record from 'table' by 'id'  -> DELETE http://localhost:3000/users/5
 
-  async delete(table:string, id: number){
+  async Delete(table:string, id: number){
     try{
       const response = await axios.delete(`${this.SERVER}/${table}/${id}`);
       return {
@@ -164,7 +164,7 @@ export class ApiService {
 
   // DELETE ALL!!! record from 'table'  -> DELETE http://localhost:3000/users
 
-  async deleteAll(table: string){
+  async DeleteAll(table: string){
     try{
       const response = await axios.delete(`${this.SERVER}/${table}`);
       return {
