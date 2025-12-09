@@ -16,9 +16,9 @@ import { HeaderComponent } from './components/system/header/header.component';
 export class AppComponent {
   app_title = 'Szállás foglaló';
   app_authors = 'Schauer Olivér, Czakó Csongor - 2025';
-  about = 'Ez egy szállás foglaló alkalmazás, ahol különböző szálláshelyek közül választhatsz és foglalhatsz le szobákat egyszerűen és gyorsan. Regisztrálj, jelentkezz be, és kezdj el felfedezni a legjobb ajánlatokat!';
+  about = '2024-ben indult projektünk célja, hogy megkönnyítsük a szállásfoglalást mindenki számára. Ez egy szállás foglaló alkalmazás, ahol különböző szálláshelyek közül választhatsz és foglalhatsz le szobákat egyszerűen és gyorsan. Regisztrálj, jelentkezz be, és kezdj el felfedezni a legjobb ajánlatokat!';
   address = '6500 Baja, Bácska tér 1.';
-  app_email = 'szallasfogalo&#64;example.com';
+  app_email = 'szallasfogalo@example.com';
 
 
 }

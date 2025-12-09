@@ -13,8 +13,9 @@
 .bal{
     text-align: justify;
     margin-left: 20px;
-    font-size: 14px;
+    font-size: 16px;
     width: 15%;
+    letter-spacing: 0.4px;
 }
 
 .bal, .kozep, .jobb{
@@ -44,12 +45,24 @@
 .kozep{
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
 }
 
 .kozep h5{
     margin: 0 auto;
 }
+
+.contactInfo, .docs{
+    font-size: 16px;
+    text-align: left;
+    margin-left: 30px;
+}
+.docs{
+    margin-left: 60px;
+   
+}
+
+
 
 
 
@@ -66,4 +79,26 @@ i{
 .feP{
     margin: 0 0;
     text-align: center;
+}
+
+
+
+@media screen and (max-width: 991px) {
+    .footerContent{
+        flex-direction: column;
+        gap: 30px;
+        align-items: center !important;
+    }
+    .bal, .kozep, .jobb{
+        width: 80%;
+        align-items: center;
+        text-align: center;
+    }
+
+    .contactInfo, .docs{
+        margin-left: 0;
+    }
+
+
+    
 }
