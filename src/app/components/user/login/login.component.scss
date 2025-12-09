@@ -1,0 +1,23 @@
+.loginDiv{
+
+    margin-top: 50px;
+    color: var(--main-bg-color);
+
+}
+
+input[type="email"], input[type="password"] {
+
+    background-color: var(--input-color);
+    box-shadow: none;
+    box-shadow: 0px 0px 3px var(--main-bg-color);
+}
+
+
+button.btn-primary {
+
+    background-color: var(--secondary-light-color);
+    border: none;
+
+}
+
+

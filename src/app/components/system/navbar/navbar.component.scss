@@ -1,31 +1,158 @@
+:root {
+
+    --capsule-bg: rgba(255, 255, 255, 0.10);
+
+    --capsule-border: rgba(255, 255, 255, 0.15);
+
+}
+ 
+/* ===== TOP NAVBAR (LOGÓ + ALAPSÁV) ===== */
+
+nav {
+
+    background-color: var(--main-font-color) !important;
+
+    
+}
+
+/* ===== CAPSULE MENÜ RÉSZ ===== */
+
 .navbar-nav {
+    
     margin: 0 auto;
-    background-color: var(--main-bg-color);
-    border-radius:  0 0 50px 50px;
-    padding: 10px 50px ;
+
+    padding: 10px 45px;
+ 
+    background: linear-gradient(90deg, var(--main-bg-color), var(--secondary-color));
+    margin-bottom: 10px;
+    border: 1px solid var(--capsule-border);
+
+    backdrop-filter: blur(12px);
+ 
+    border-radius: 20px;
+
+    max-width: 900px;
+ 
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.18);
+
+    position: sticky;
+    top: 10px;
+    z-index: 1000;
+
 }
 
-nav{
-    padding: 0;
 
+
+
+
+/* Toggler container styling */
+.navbar-toggler {
+    border: none !important;
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(10px);
+    padding: 6px 14px;
+    margin:  0 0 ;
+    border-radius: 12px;
+    color: var(--main-font-color);
+    transition: 0.25s ease-in-out;
+}
+ 
+.toggler-icon{
+    margin: 0 auto;
+    font-size: 0.4rem;
+    color: var(--main-font-color);
+    transition: transform 0.25s ease;
 }
 
-.nav-item{
-    margin: 0 15px;
-    font-weight: bold;
+/* Chevron icon itself */
+.navbar-toggler .toggler-icon {
+    font-size: 1.4rem;
+    color: var(--main-font-color);
+    transition: transform 0.25s ease;
+    display: inline-block;
 }
 
-.nav-link{
+
+ 
+/* ===== NAV ITEMS ===== */
+
+.nav-item {
+
+    margin: 0 18px;
+
+    font-weight: 600;
+
+}
+ 
+/* ===== NAV LINKS ===== */
+
+.nav-link {
+
     color: var(--main-font-color) !important;
+
+    font-size: 1.05rem;
+
+    position: relative;
+
+    padding: 6px 0;
+
+    transition: 0.3s;
+
 }
+ 
+/* Subtle hover color */
+
+.nav-link:hover {
+
+    color: #ffffff !important;
+
+    opacity: 0.85;
+
+}
+ 
+/* Underline animation (thin + elegant) */
+
+.nav-link::after {
+
+    content: '';
+
+    position: absolute;
+
+    left: 0;
+
+    bottom: -4px;
+
+    width: 100%;
+
+    height: 1.5px;
+
+    background: var(--main-font-color);
+ 
+    transform: scaleX(0);
+
+    transform-origin: right;
+
+    transition: transform 0.3s ease;
+
+}
+ 
+.nav-link:hover::after {
+
+    transform: scaleX(1);
+    transform-origin: left;
+
+}
+ 
+/* ===== MOBILE TOGGLER ===== */
+
 .navbar-toggler{
     border: none !important;
    margin: 0 auto;
    background-color: var(--main-bg-color);
    color: var(--main-font-color);
    padding-top: 0px;
-   width: 10%;
-   border-radius: 0px 0px 20px 20px;
+   padding: 8px 8px;
+   border-radius: 50%;
 }
 
 .navbar-toggler:focus,
@@ -34,6 +161,63 @@ nav{
     outline: none !important;
     box-shadow: none !important;
 }
+
+
+.navbar-toggler:hover {
+    background-color: var(--secondary-color);
+    color: var(--main-font-color);
+    transform: scale(1.1);
+    transition: transform 0.25s ease;
+}
+
+
+.navbar-toggler:not(.collapsed) .toggler-icon {
+    transform: rotate(180deg);
+}
+/* ===== MOBILE VERSION ===== */
+
+@media (max-width: 991px) {
+ 
+    .navbar-nav {
+
+        border-radius: 10px;
+
+        max-width: 100%;
+
+        margin-top: 10px;
+
+    }
+ 
+    .nav-item {
+
+        margin: 10px 0;
+
+    }
+
+    nav {
+
+        padding: 0;
+
+    }
+
+    .nav-link::after {
+
+        transform-origin: left;
+
+    }
+
+    .nav-link:hover::after {
+
+        transform: scaleX(0.15);
+        transform-origin: left;
+    
+    }
+
+}
+
+ 
+
+
 
 
 .container-fluid{
