@@ -6,29 +6,55 @@
             <p class="us">
                 {{aboutUs}}
             </p>
-            <h5 class="d-inline">Cím:</h5>
-            <p class="cim">{{cim}}</p>
+
+
 
         </div>
         <div class="kozep">
-            <h5>Kapcsolat</h5>
-            <p class="kapcs">Email: scahueroliver&#64;turr.hu</p>
-            <p class="kapcs">Telefon: +36 20 123 4567</p>
-            <p class="kapcs">GYIK</p>
-            <p class="kapcs">Felhasználási feltételek</p>
+            <!--a cím alapján kialakítani ezeket az elemeket: email, telefon, gyik, felhasználási feltételek-->
+            <div class="contactInfo d-flex flex-column align-items-start">
+                <h5>Kapcsolat/Tudnivalók</h5>
+
+                <div class="d-flex flex-row align-items-center footerElement">
+                    <i class="bi bi-geo-alt fs-4 p-1"></i>
+                    <p class="feP">{{cim}}</p>
+                </div>
+                <div class="d-flex flex-row align-items-center footerElement">
+                    <i class="bi bi-envelope fs-4 p-1"></i>
+                    <p class="feP">{{email}}</p>
+                </div>
+                <div class="d-flex flex-row align-items-center footerElement">
+                    <i class="bi bi-phone fs-4 p-1"></i>
+                    <p class="feP">+36 30 123 4567</p>
+                </div>
+                <div class="d-flex flex-row align-items-center footerElement">
+                    <i class="bi bi-question-circle fs-4 p-1"></i>
+                    <p class="feP">GYIK </p>
+                </div>
+                <div class="d-flex flex-row align-items-center footerElement">
+                    <i class="bi bi-file-text fs-4 p-1"></i>
+                    <p class="feP">Felhasználási feltételek</p>
+                </div>
+            </div>
 
 
         </div>
 
         <div class="jobb">
             <h5>Kövess minket</h5>
-            <p class="kapcs">Facebook</p>
-            <p class="kapcs">Instagram</p>
-            <p class="kapcs">X</p>
+            <div class="media">
+                <p class="kapcs"><i class="bi bi-instagram mediaIcons"></i></p>
+                <p class="kapcs">
+                    <i class="bi bi-facebook mediaIcons"></i>
+                </p>
+                <p class="kapcs">
+                    <i class="bi bi-twitter mediaIcons"></i>
+                </p>
+            </div>
         </div>
     </div>
     <div class="credits d-flex justify-content-center align-items-center">
-        <img src="logo.png" alt="Logo" width="30" height="24" class="d-inline-block" id="logoImg">
+        <i class="bi bi-houses p-3"></i>
         <span>{{author}} - &copy; {{title}} 2025</span>
     </div>
 

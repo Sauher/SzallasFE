@@ -12,5 +12,6 @@ export class FooterComponent {
   @Input() author:string = "";
   @Input() aboutUs:string = "";
   @Input() cim:string = "";
+  @Input() email:string = "";
 
 }

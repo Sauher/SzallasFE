@@ -5,7 +5,7 @@
 
 }
 
-input[type="email"], input[type="password"] {
+input[type="email"], input[type="password"], input[type="text"], input[type="tel"] {
 
     background-color: var(--input-color);
     box-shadow: none;
@@ -18,4 +18,10 @@ button.btn-primary {
     background-color: var(--secondary-light-color);
     border: none;
 
+
+}
+
+button:hover{
+    background-color: var(--secondary-color);
+    
 }

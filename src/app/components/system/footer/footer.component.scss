@@ -2,20 +2,68 @@
     color: var(--main-font-color);
     padding: 10px 0;
     width: 100%;
-    background: linear-gradient(90deg, var(--main-bg-color), var(--secondary-color), var(--main-bg-color));
+    background: linear-gradient(90deg, var(--main-bg-color), var(--secondary-color));
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
 }
 
 
 .bal{
-    text-align: left;
+    text-align: justify;
     margin-left: 20px;
     font-size: 14px;
     width: 15%;
 }
 
-#logoImg{
-    margin-right: 10px;
-    border-radius: 5px;
-    filter: invert(0.2);
+.bal, .kozep, .jobb{
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+
+.media{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: center;
+}
+
+
+//középen a kapcsolati elemek egyesítése flex columnba
+// a középre rendezett kapcsolat/tudnivalók felirattl egy vonalban kezdődjön mindegyik elem
+.footerElement{
+    gap: 10px;
+    margin: 0 0;
+}
+
+.kozep{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.kozep h5{
+    margin: 0 auto;
+}
+
+
+
+
+i{
+    color: var(--secondary-light-color);
+}
+
+.mediaIcons{
+    font-size: 1.5rem;
+}
+
+
+.feP{
+    margin: 0 0;
+    text-align: center;
 }
