@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink, RouterModule } from "@angular/router";
+import { FormsModule } from '@angular/forms';
 import { APIService } from '../../../services/api.service';
 import { AuthService } from '../../../services/auth.service';
 import { MessageService } from '../../../services/message.service';
@@ -15,7 +16,7 @@ interface User {
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [],
+  imports: [RouterLink, RouterModule, FormsModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
@@ -40,7 +41,7 @@ export class LoginComponent {
   login() {
     this.api.Login('users', this.user).then(res => {
       if (res.status == 500) {
-        this.message.show('danger', 'Hiba', "Hiba van a rendszerben")
+        this.message.show('danger', 'Hiba', res.message);
         return
       }
       if (this.rememberMe) {

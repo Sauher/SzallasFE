@@ -3,15 +3,15 @@
   <hr>
   <form>
     <div class="mb-3">
-      <input type="email" class="form-control" id="loginEmail" aria-describedby="emailHelp" placeholder="Email">
+      <input type="email" class="form-control" id="loginEmail" aria-describedby="emailHelp" placeholder="Email" name="email" [(ngModel)]="user.email">
     </div>
     <div class="mb-3">
-      <input type="password" class="form-control" id="loginPw" placeholder="Jelszó">
+      <input type="password" class="form-control" id="loginPw" placeholder="Jelszó" name="password" [(ngModel)]="user.password">
     </div>
     <div class="mb-3 form-check">
-      <input type="checkbox" class="form-check-input" id="rememberMe">
+      <input type="checkbox" class="form-check-input" value="" id="rememberMe" name="rememberMe" [(ngModel)]="rememberMe">
       <label class="form-check-label" for="rememberMe">Remember me</label>
     </div>
-    <button class="btn btn-primary">Bejelentkezés</button>
+    <button class="btn btn-primary" (click)="login()">Bejelentkezés</button>
   </form>
 </div>
