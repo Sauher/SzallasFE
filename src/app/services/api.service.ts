@@ -28,6 +28,21 @@ export class APIService {
       }
     }
   }
+  async getMail(data:object):Promise<ApiResponse>{
+    try{
+      const res = await axios.post(`${this.SERVER}/contact`,data)
+    return {
+      status:200,
+      message: res.data.message
+    }
+    }
+    catch (err : any){
+      return {
+        status:500,
+        message: "Hiba történt az email küldésekor"
+      }
+    }
+  }
 
   async Registration(table: string, data: any){
     try{

@@ -2,19 +2,8 @@
     <div class="container-fluid">
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-                <!-- ######################################### Ez listából lesz feltöltve, status alapján ######################################### -->
-                <!-- Guest/logged out user -->
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" routerLink="login">Bejelentkezés</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" routerLink="registration">Regisztráció</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" routerLink="accommodation">Szállások</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" routerLink="contact">Kapcsolat</a>
+                <li class="nav-item" *ngFor="let navItem of navItems">
+                    <a class="nav-link" [routerLink]="navItem.url">{{navItem.name}}</a>
                 </li>
             </ul>
         </div>

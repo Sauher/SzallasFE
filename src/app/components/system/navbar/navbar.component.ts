@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink, RouterModule } from '@angular/router';
+import { NavItem } from '../../../interfaces/navItem';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -10,5 +12,76 @@ import { RouterLink, RouterModule } from '@angular/router';
   styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent {
+  isLoggedIn = false;
+  isAdmin = false;
+  loggedUserName = '';
+  cartCount = 0
+  constructor(
+    private auth: AuthService,
+  ){}
 
+  navItems:NavItem[] = []
+
+  ngOnInit():void{
+    this.auth.isLoggedIn$.subscribe(res =>{
+      this.isLoggedIn = res
+      this.isAdmin = this.auth.isAdmin()
+      
+      if(this.isLoggedIn){
+        this.loggedUserName = this.auth.loggedUser()[0].name;
+        this.setupMenu(true);
+      }
+      else{
+        this.loggedUserName = ""
+        this.setupMenu(false)
+      }
+      
+    })
+  }
+
+  setupMenu(isLoggedIn:Boolean){
+    this.navItems=[
+      ...(isLoggedIn)?[
+      {
+        name: 'Szállás foglalás',
+        url:'booking',
+      },
+      ...(this.isAdmin) ? [
+        {
+          name: 'Admin felület',
+          url:'admin'
+        },
+        {
+          name: 'Statisztika',
+          url:'stats'
+        },
+      ] : [], 
+      {
+        name: 'Profil',
+        url:'profile'
+      },
+      {
+        name: 'Kilépés',
+        url:'logout'
+      },
+    ] : [
+      {
+        name: 'Belépés',
+        url:'login'
+      },
+      {
+        name: 'Regisztráció',
+        url:'registration'
+      },
+      {
+        name: 'Szállások',
+        url:'accommodations'
+      },
+      {
+        name: 'Kapcsolat',
+        url:'contact'
+      }
+    ]
+    ]
+  }
 }
