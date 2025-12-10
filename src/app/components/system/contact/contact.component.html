@@ -19,7 +19,7 @@
         <div class="mb-3">
             <select class="form-select" aria-label="Default select example" aria-placeholder="Tárgy" [(ngModel)]="contact.subject" name="subject">
                 <option selected disabled>Tárgy</option>
-                <option value="{{i}}" *ngFor="let error of errors index as i">
+                <option value="{{error}}" *ngFor="let error of errors index as i">
                     {{error}}
                 </option>
 
