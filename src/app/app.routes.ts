@@ -3,11 +3,13 @@ import { LoginComponent } from './components/user/login/login.component';
 import { NotfoundComponent } from './components/system/notfound/notfound.component';
 import { RegistrationComponent } from './components/user/registration/registration.component';
 import { LogoutComponent } from './components/user/logout/logout.component';
+import { ContactComponent } from './components/system/contact/contact.component';
 
 export const routes: Routes = [
     {path: 'login', component: LoginComponent},
     {path: 'registration', component: RegistrationComponent},
     {path: 'logout', component: LogoutComponent},
+    {path: 'contact', component: ContactComponent},
 
     
     //Kivételes routeok

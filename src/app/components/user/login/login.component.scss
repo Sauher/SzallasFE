@@ -25,3 +25,19 @@ button:hover{
     
 }
 
+
+input[type="checkbox"]{
+
+    width: 15px;
+    height: 15px;
+
+    background-color: var(--main-bg-color);
+
+
+    
+}
+
+input[type="checkbox"]:focus{
+    outline: none !important;
+    box-shadow: none !important;
+}

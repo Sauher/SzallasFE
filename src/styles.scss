@@ -44,3 +44,9 @@ app-navbar{
     top: 0;
     left: 0;
 }
+
+input[type="checkbox"]:focus{
+    outline: none !important;
+    box-shadow: none !important;
+}
+
