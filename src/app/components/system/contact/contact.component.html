@@ -19,7 +19,6 @@
         <div class="mb-3">
             <select class="form-select" aria-label="Default select example" aria-placeholder="Tárgy">
                 <option selected disabled>Tárgy</option>
-                <!--errors list aalpjan feltölteni ngfor segítségével-->
                 <option value="{{i}}" *ngFor="let error of errors index as i">
                     {{error}}
                 </option>
