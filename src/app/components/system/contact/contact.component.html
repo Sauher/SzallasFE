@@ -6,11 +6,16 @@
     </div>
     <form>
         <!--contact via email-->
+        <div class="mb-3">
+            <input type="text" class="form-control" id="contactName" aria-describedby="name" placeholder="Teljes név"
+                name="fullname" [(ngModel)]="contact.name">
+        </div>
 
         <div class="mb-3">
             <input type="email" class="form-control" id="contactEmail" aria-describedby="emailHelp" placeholder="Email"
                 name="email" [(ngModel)]="contact.email">
         </div>
+        <hr>
         <div class="mb-3">
             <select class="form-select" aria-label="Default select example" aria-placeholder="Tárgy">
                 <option selected disabled>Tárgy</option>
