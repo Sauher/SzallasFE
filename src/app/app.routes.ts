@@ -9,7 +9,7 @@ export const routes: Routes = [
     {path: 'login', component: LoginComponent},
     {path: 'registration', component: RegistrationComponent},
     {path: 'logout', component: LogoutComponent},
-    {path: 'contact', component: ContactComponent},
+    {path: 'contact', component: ContactComponent}, 
 
     
     //Kivételes routeok
