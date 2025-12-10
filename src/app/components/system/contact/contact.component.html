@@ -1,0 +1,31 @@
+<div class="loginDiv p3 col-lg-3 col-sm-5 col-6 mb-3 mx-auto">
+    <h2 class="text-center">Kapcsolat</h2>
+    <hr>
+    <div class="infos">
+        <p class="text-center fs-5">Ha kérdése van, lépjen kapcsolatba velünk az alábbi űrlap kitöltésével.</p>
+    </div>
+    <form>
+        <!--contact via email-->
+
+        <div class="mb-3">
+            <input type="email" class="form-control" id="contactEmail" aria-describedby="emailHelp" placeholder="Email"
+                name="email" [(ngModel)]="contact.email">
+        </div>
+        <div class="mb-3">
+            <select class="form-select" aria-label="Default select example" aria-placeholder="Tárgy">
+                <option selected disabled>Tárgy</option>
+                <!--errors list aalpjan feltölteni ngfor segítségével-->
+                <option value="{{i}}" *ngFor="let error of errors index as i">
+                    {{error}}
+                </option>
+
+
+            </select>
+        </div>
+        <div class="mb-3">
+            <textarea class="form-control" id="contactMessage" rows="3" placeholder="Üzenet (max. 800 karakter)"
+                name="message" [(ngModel)]="contact.message"></textarea>
+        </div>
+        <button class="btn btn-primary" (click)="sendContact()">Küldés</button>
+    </form>
+</div>
