@@ -35,7 +35,7 @@ export class ContactComponent {
   ];
 
   sendContact(){
-    this.api.sendMail(this.contact).then(res=>{
+    this.api.getMail(this.contact).then(res=>{
       if(res.status==500){
         this.message.show('danger', 'Hiba', res.message!);
         return
