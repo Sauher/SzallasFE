@@ -1,5 +1,6 @@
 <app-header [title]="app_title"></app-header>
-<app-navbar></app-navbar>
+<div #detect></div>
+<app-navbar [class.stuck]="isStuck" #navbar></app-navbar>
 <app-message></app-message>
 
 <router-outlet></router-outlet>
