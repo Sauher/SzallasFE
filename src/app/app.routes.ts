@@ -11,7 +11,7 @@ export const routes: Routes = [
     {path: 'registration', component: RegistrationComponent},
     {path: 'logout', component: LogoutComponent},
     {path: 'contact', component: ContactComponent}, 
-    {path: 'accommodation', component:AccommodationComponent},
+    {path: 'accommodations', component:AccommodationComponent},
 
     
     //Kivételes routeok

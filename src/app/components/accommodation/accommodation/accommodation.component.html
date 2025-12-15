@@ -1,1 +1,27 @@
-<p>accommodation works!</p>
+<!--filter section -->
+<div class="filterSection d-flex justify-content-center mb-3">
+    <input type="text" placeholder="Keress..." class="form-control w-50 col col-lg-4 sm-6 col-4" />
+    <div class=" ms-2">
+            <button class="filterBTN" type="button">Ár alapján</button>
+            <button class="filterBTN" type="button">Kapacitás alapján</button>
+    </div>
+</div>
+
+<ul class="accommodationList d-flex flex-wrap justify-content-center mb-3 mx-auto">
+    <li *ngFor="let accommodation of accommodations">
+        <div class="cardDiv mx-auto">
+            <img src="{{accommodation.imageUrl}}.png" alt="">
+            <div class="properties">
+                <p class="capacity">ferőhely: {{accommodation.capacity}} fő</p>
+                <p class="address">
+                    {{accommodation.address}}
+                </p>
+                <hr>
+                <p class="price">
+                    {{ accommodation.price | currency:'EUR':'symbol':'1.0-0' }}
+                </p>
+                <button class="more"><i class="bi bi-three-dots"></i></button>
+            </div>
+        </div>
+    </li>
+</ul>
