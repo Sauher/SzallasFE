@@ -1,43 +1,78 @@
 <div class="mainDiv p3 mb-3 admin-cards-row">
-  
-  <div class="card cardDiv mx-3 mb-3 admin-card">
-  <div class="card-body text-center">
-    <h5 class="card-title">Szállások</h5>
-    
 
-<div class="list-group mb-3">
-  <a href="#" class="list-group-item list-group-item-action">
-    <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1">List group item heading</h5>
+    <div class="card cardDiv mx-3 admin-card">
+        <div class="card-body text-center">
+            <h4 class="card-title mb-3">Szállások</h4>
+
+            <div class="list-group mb-3">
+                <a *ngFor="let accomodation of accomodations | slice:0:5;let i = index"
+                    class="list-group-item list-group-item-action">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1 mx-auto">{{accomodation.name}}</h5>
+                    </div>
+                    <p class="mb-1">Some placeholder content in a paragraph.</p>
+                </a>
+                <p><small>Továbbiak megtekintéséhez kattints a kezelés gombra</small></p>
+            </div>
+
+
+            <a class="btn" data-bs-toggle="modal" data-bs-target="#AccomodationModal">Kezelés</a>
+        </div>
     </div>
-    <p class="mb-1">Some placeholder content in a paragraph.</p>
-  </a>
-  <a href="#" class="list-group-item list-group-item-action">
-    <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1">List group item heading</h5>
+
+    <div class="card cardDiv mx-3 admin-card">
+        <div class="card-body text-center">
+            <h4 class="card-title mb-3">Felhasználók</h4>
+            <div class="list-group mb-3">
+                <a *ngFor="let user of users | slice:0:5;let i = index"
+                    class="list-group-item list-group-item-action">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1 mx-auto">{{user.name}}</h5>
+                    </div>
+                    <p class="mb-1">Some placeholder content in a paragraph.</p>
+                </a>
+                <p><small>Továbbiak megtekintéséhez kattints a kezelés gombra</small></p>
+            </div>
+            <a class="btn" data-bs-toggle="modal" data-bs-target="#UserModal">Kezelés</a>
+        </div>
     </div>
-    <p class="mb-1">Some placeholder content in a paragraph.</p>
-  </a>
-  <a href="#" class="list-group-item list-group-item-action">
-    <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1">List group item heading</h5>
+
+
+ <!-- User Modal -->
+    <div class="modal fade" id="UserModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="UserModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-4" id="UserModalLabel">Felhasználók kezelése</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn" data-bs-dismiss="modal">Mégsem</button>
+          <button type="button" class="btn">Megerősítés</button>
+        </div>
+      </div>
     </div>
-    <p class="mb-1">Some placeholder content in a paragraph.</p>
-  </a>
-</div>
-
-
-    <a class="btn">Kezelés</a>
   </div>
+<!-- Accomodation modal -->
+ <div class="modal fade" id="AccomodationModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="AccomodationModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-4" id="AccomodationModalLabel">Szállások kezelése</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn" data-bs-dismiss="modal">Mégsem</button>
+          <button type="button" class="btn">Megerősítés</button>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="card cardDiv mx-3 admin-card">
-  <div class="card-body text-center">
-    <h5 class="card-title">Felhasználók</h5>
-    <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum quasi dolores amet temporibus at repellat suscipit vel non atque optio error molestias iusto illo voluptatibus, ratione accusantium reiciendis maxime! Veniam.</p>
-    <a class="btn">Kezelés</a>
-  </div>
-</div>
-
-
 
 </div>
