@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 
-:root{
+:root {
     --main-font-color: #ecfdfd;
     --main-bg-color: #34424d;
     --secondary-color: #3d3d66;
@@ -11,7 +11,7 @@
 
     --input-color: #d2d2fa77;
 
- 
+
 }
 
 //font main color:  #ecfdfd;
@@ -19,7 +19,7 @@
 //secondary color: #8e8dbe;
 
 
-body{
+body {
     padding: 0;
     background-color: var(--main-font-color);
     display: flex;
@@ -34,40 +34,42 @@ app-root {
     flex-direction: column;
 }
 
-app-footer{
+app-footer {
     margin-top: auto;
 }
 
 
-app-navbar{
+app-navbar {
     justify-content: center;
     position: sticky;
     top: 0;
     left: 0;
     transition: all 0.4s ease-out;
-}
-
-app-navbar.stuck, #navbarNav.stuck{
-    transform: scale(0.9)  translateY(-14px); 
+    z-index: 1000 !important;
 
 }
 
+app-navbar.stuck,
+#navbarNav.stuck {
+    transform: scale(0.9) translateY(-14px);
+    background: linear-gradient(var(--glass-bg-hover) 30%,  transparent 70%);
 
+}
 
-
-
-#navbarNav, nav{
+#navbarNav,
+nav {
     background: none !important;
 }
 
 
-input[type="checkbox"]:focus{
+
+input[type="checkbox"]:focus {
     outline: none !important;
     box-shadow: none !important;
 }
 
 
-input[type="text"]:focus{
+input[type="text"]:focus {
     outline: none !important;
     box-shadow: none !important;
 }
@@ -75,7 +77,10 @@ input[type="text"]:focus{
 
 
 @media (max-width: 991px) {
-    app-navbar.stuck, #navbarNav.stuck, nav{
+
+    app-navbar.stuck,
+    #navbarNav.stuck,
+    nav {
         transform: scale(1) translatex(0) translateY(0);
-    } 
+    }
 }

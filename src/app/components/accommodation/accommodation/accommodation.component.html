@@ -1,9 +1,14 @@
+<div class="mainAccDiv mx-auto">
 <!--filter section -->
 <div class="filterSection d-flex justify-content-center mb-3">
-    <input type="text" placeholder="Keress..." class="form-control w-50 col col-lg-4 sm-6 col-4" />
-    <div class=" ms-2">
-            <button class="filterBTN" type="button">Ár alapján</button>
-            <button class="filterBTN" type="button">Kapacitás alapján</button>
+    <input type="text" placeholder="Keress..." class="form-control w-50 col col-lg-2 sm-2 col-2" [(ngModel)]="searchTerm" (ngModelChange)="searchFilter($event)"/>
+    <div class="ms-2">
+            <button class="filterBTN" type="button" (click)="toggleOrder('price')">
+                Ár alapján <i [ngClass]="priceOrder === 'asc' ? 'bi bi-caret-up' : 'bi bi-caret-down'"></i>
+            </button>
+            <button class="filterBTN" type="button" (click)="toggleOrder('capacity')">
+                Kapacitás alapján <i [ngClass]="capacityOrder === 'asc' ? 'bi bi-caret-up' : 'bi bi-caret-down'"></i>
+            </button>
     </div>
 </div>
 
@@ -12,7 +17,7 @@
         <div class="cardDiv mx-auto">
             <img src="{{accommodation.imageUrl}}.png" alt="">
             <div class="properties">
-                <p class="capacity">ferőhely: {{accommodation.capacity}} fő</p>
+                <p class="capacity"><span style="font-style: normal;">Ferőhely:</span> {{accommodation.capacity}} fő</p>
                 <p class="address">
                     {{accommodation.address}}
                 </p>
@@ -25,3 +30,4 @@
         </div>
     </li>
 </ul>
+</div>
