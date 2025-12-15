@@ -5,6 +5,7 @@ import { RegistrationComponent } from './components/user/registration/registrati
 import { LogoutComponent } from './components/user/logout/logout.component';
 import { ContactComponent } from './components/system/contact/contact.component';
 import { AdminpanelComponent } from './components/admin/adminpanel/adminpanel.component';
+import { AccommodationComponent } from './components/accommodation/accommodation/accommodation.component';
 
 export const routes: Routes = [
     {path: 'login', component: LoginComponent},
@@ -12,6 +13,7 @@ export const routes: Routes = [
     {path: 'logout', component: LogoutComponent},
     {path: 'contact', component: ContactComponent},
     {path: 'adminpanel', component:AdminpanelComponent},
+    {path: 'accommodations', component:AccommodationComponent},
 
     
     //Kivételes routeok
