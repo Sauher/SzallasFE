@@ -61,6 +61,14 @@ export class NavbarComponent {
         url:'profile'
       },
       {
+        name: 'Szállások',
+        url:'accommodations'
+      },
+      {
+        name: 'Kapcsolat',
+        url:'contact'
+      },
+      {
         name: 'Kilépés',
         url:'logout'
       },
@@ -80,7 +88,7 @@ export class NavbarComponent {
       {
         name: 'Kapcsolat',
         url:'contact'
-      }
+      },
     ]
     ]
   }
