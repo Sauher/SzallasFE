@@ -49,7 +49,7 @@ export class NavbarComponent {
       ...(this.isAdmin) ? [
         {
           name: 'Admin felület',
-          url:'admin'
+          url:'adminpanel'
         },
         {
           name: 'Statisztika',

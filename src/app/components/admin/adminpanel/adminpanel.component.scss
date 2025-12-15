@@ -1,0 +1,38 @@
+.cardDiv{
+    background: linear-gradient(90deg, var(--main-bg-color), var(--secondary-color));
+    color: var(--main-font-color);
+}
+.btn{
+    background-color: var(--input-color);
+    color: var(--main-font-color);
+    transition: 500ms;
+}
+.btn:hover{
+    background-color: var(--secondary-light-color);
+    transform: scale(1.1);
+}
+
+/* Admin panel layout: place cards in a row and allow wrapping on small screens */
+.admin-cards-row{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0;
+}
+
+.admin-card{
+    /* Let cards shrink but try to keep a consistent width */
+    flex: 0 1 300px; /* grow 0, shrink 1, base width 300px */
+    max-width: 350px;
+}
+.list-group-item{
+    background-color: var(--input-color);
+    color: var(--main-font-color) !important;
+}
+
+
+.list-group-item-action:not(.active):hover {
+  z-index: 1;
+  text-decoration: none;
+  background-color: var(--secondary-color) !important;
+}
