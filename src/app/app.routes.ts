@@ -4,12 +4,14 @@ import { NotfoundComponent } from './components/system/notfound/notfound.compone
 import { RegistrationComponent } from './components/user/registration/registration.component';
 import { LogoutComponent } from './components/user/logout/logout.component';
 import { ContactComponent } from './components/system/contact/contact.component';
+import { AccommodationComponent } from './components/accommodation/accommodation/accommodation.component';
 
 export const routes: Routes = [
     {path: 'login', component: LoginComponent},
     {path: 'registration', component: RegistrationComponent},
     {path: 'logout', component: LogoutComponent},
     {path: 'contact', component: ContactComponent}, 
+    {path: 'accommodation', component:AccommodationComponent},
 
     
     //Kivételes routeok
