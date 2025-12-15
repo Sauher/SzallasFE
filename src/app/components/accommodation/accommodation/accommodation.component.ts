@@ -1,10 +1,11 @@
 import { CommonModule, CurrencyPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-accommodation',
   standalone: true,
-  imports: [CurrencyPipe, CommonModule],
+  imports: [CurrencyPipe, CommonModule, FormsModule],
   templateUrl: './accommodation.component.html',
   styleUrls: ['./accommodation.component.scss']
 })
@@ -13,6 +14,10 @@ export class AccommodationComponent implements OnInit {
   ngOnInit(): void {
     
   }
+
+  searchTerm: string = '';
+  priceOrder: 'asc' | 'desc' = 'asc';
+  capacityOrder: 'asc' | 'desc' = 'asc';
 
   accommodations = [
     { id: 1, name: 'Hotel Sunshine', address: '123 Sunny St, Beach City', capacity: 2, price: 120, imageUrl: 'logo' },
@@ -35,4 +40,39 @@ export class AccommodationComponent implements OnInit {
     { id: 18, name: 'Seaside Sanctuary', address: '456 Wave Rd, Bay City', capacity: 4, price: 280, imageUrl: 'logo' },
   ];
 
+
+
+  orderBy(property: string, order: 'asc' | 'desc'): void {
+    // create a sorted copy instead of mutating in place
+    const sorted = [...this.accommodations].sort((a, b) => {
+      const av = a[property as keyof typeof a] as any;
+      const bv = b[property as keyof typeof b] as any;
+      if (av < bv) return order === 'asc' ? -1 : 1;
+      if (av > bv) return order === 'asc' ? 1 : -1;
+      return 0;
+    });
+    this.accommodations = sorted;
+
+    if (property === 'price') {
+      this.priceOrder = order;
+    } else if (property === 'capacity') {
+      this.capacityOrder = order;
+    }
+  }
+
+  toggleOrder(property: 'price' | 'capacity'){
+    if(property === 'price'){
+      const next = this.priceOrder === 'asc' ? 'desc' : 'asc';
+      this.orderBy('price', next);
+    } else {
+      const next = this.capacityOrder === 'asc' ? 'desc' : 'asc';
+      this.orderBy('capacity', next);
+    }
+  }
+
+
+  searchFilter(accommodation: any): boolean {
+    const term = this.searchTerm.toLowerCase();
+    return accommodation.name.toLowerCase().includes(term) || accommodation.address.toLowerCase().includes(term);
+  }
 }

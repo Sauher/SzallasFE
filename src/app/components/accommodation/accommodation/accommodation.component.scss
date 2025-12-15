@@ -18,7 +18,7 @@
 
 
 .cardDiv{
-    background: linear-gradient(135deg, var(--main-bg-color), var(--secondary-color));
+    background: linear-gradient(var(--main-bg-color), var(--secondary-color));
     color: var(--main-font-color);
     border-radius: 15px;
     box-shadow: 0 0 10px var(--main-bg-color);
@@ -79,6 +79,7 @@ hr{
     width: 90%;
     border: 0.5px solid var(--main-font-color);
     margin: 10px 0;
+    z-index: 0;
 }
 
 
@@ -106,4 +107,36 @@ ul{
     margin-left: 20px;
     font-size: 16px;
 
+}
+
+
+input[type="text"]{
+    background-color: var(--input-color);
+    color: var(--main-bg-color);
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 0 4px var(--main-bg-color);
+    transition: all 0.3s ease;
+    padding: 8px 16px;
+    width: 30% !important;
+    align-self: flex-start !important;
+}
+
+@media screen and (max-width: 710px) {
+
+    .filterBTN{
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+
+    .filterSection
+    {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+
+    input[type="text"]{
+        width: 80% !important;
+    }
 }
