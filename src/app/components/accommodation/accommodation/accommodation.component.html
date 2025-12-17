@@ -1,7 +1,7 @@
 <div class="mainAccDiv mx-auto">
 <!--filter section -->
 <div class="filterSection d-flex justify-content-center mb-3">
-    <input type="text" placeholder="Keress..." class="form-control w-50 col col-lg-2 sm-2 col-2" [(ngModel)]="searchTerm" (ngModelChange)="searchFilter($event)"/>
+    <input type="text" placeholder="Keress..." class="form-control w-50 col col-lg-2 sm-2 col-2" [(ngModel)]="searchTerm" (ngModelChange)="searchFilter()"/>
     <div class="ms-2">
             <button class="filterBTN" type="button" (click)="toggleOrder('price')">
                 Ár alapján <i [ngClass]="priceOrder === 'asc' ? 'bi bi-caret-up' : 'bi bi-caret-down'"></i>

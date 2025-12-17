@@ -12,7 +12,7 @@ import { FormsModule } from '@angular/forms';
 export class AccommodationComponent implements OnInit {
 
   ngOnInit(): void {
-    // Initialization logic here
+    this.searchFilter();
   }
 
   searchTerm: string = '';
@@ -41,6 +41,23 @@ export class AccommodationComponent implements OnInit {
   ];
 
 
+  searchFilter(): void {
+    const originalAccommodations = this.accommodations;
+    const term = this.searchTerm.toLowerCase();
+    this.accommodations = this.accommodations.filter(accommodation =>
+      accommodation.name.toLowerCase().includes(term) || accommodation.address.toLowerCase().includes(term)
+
+    );
+    if(this.accommodations.length === 0){
+      // Optionally, handle the case where no accommodations match the search term
+      this.accommodations = originalAccommodations;
+
+      this.ngOnInit();
+    }
+
+      
+  }
+
 
   orderBy(property: string, order: 'asc' | 'desc'): void {
     // create a sorted copy instead of mutating in place
@@ -68,11 +85,5 @@ export class AccommodationComponent implements OnInit {
       const next = this.capacityOrder === 'asc' ? 'desc' : 'asc';
       this.orderBy('capacity', next);
     }
-  }
-
-
-  searchFilter(accommodation: any): boolean {
-    const term = this.searchTerm.toLowerCase();
-    return accommodation.name.toLowerCase().includes(term) || accommodation.address.toLowerCase().includes(term);
   }
 }
