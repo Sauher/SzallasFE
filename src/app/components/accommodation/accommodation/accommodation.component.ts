@@ -12,7 +12,11 @@ import { FormsModule } from '@angular/forms';
 export class AccommodationComponent implements OnInit {
 
   ngOnInit(): void {
+<<<<<<< HEAD
     this.searchFilter();
+=======
+    
+>>>>>>> 5ee6972015135873008645227579587bd8e07293
   }
 
   searchTerm: string = '';
