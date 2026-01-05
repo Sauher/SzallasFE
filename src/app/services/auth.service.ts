@@ -59,6 +59,12 @@ export class AuthService {
     return false;
   }
 
+  isOwner():boolean{
+    const user = this.loggedUser();
+    if (user) return user[0].role === 'owner';
+    return false;
+  }
+
   isLoggedUser():boolean {
     return this.isLoggedIn.value;
   }

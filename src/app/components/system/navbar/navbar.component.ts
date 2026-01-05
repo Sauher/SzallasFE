@@ -14,6 +14,7 @@ import { AuthService } from '../../../services/auth.service';
 export class NavbarComponent {
   isLoggedIn = false;
   isAdmin = false;
+  isOwner = false;
   loggedUserName = '';
   cartCount = 0
   constructor(
@@ -26,7 +27,8 @@ export class NavbarComponent {
     this.auth.isLoggedIn$.subscribe(res =>{
       this.isLoggedIn = res
       this.isAdmin = this.auth.isAdmin()
-      
+      this.isOwner = this.auth.isOwner()
+
       if(this.isLoggedIn){
         this.loggedUserName = this.auth.loggedUser()[0].name;
         this.setupMenu(true);
@@ -54,6 +56,12 @@ export class NavbarComponent {
         {
           name: 'Statisztika',
           url:'stats'
+        },
+      ] : [], 
+      ...(this.isOwner) ? [
+        {
+          name: 'Szállások kezelése',
+          url:'manageaccommodations'
         },
       ] : [], 
       {

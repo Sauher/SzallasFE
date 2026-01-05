@@ -7,6 +7,7 @@ import { ContactComponent } from './components/system/contact/contact.component'
 import { AdminpanelComponent } from './components/admin/adminpanel/adminpanel.component';
 import { AccommodationComponent } from './components/accommodation/accommodation/accommodation.component';
 import { ProfileComponent } from './components/user/profile/profile.component';
+import { ManageaccommodationsComponent } from './components/owner/manageaccomodations/manageaccommodations.component';
 
 export const routes: Routes = [
     // Felhasználói routeok
@@ -14,6 +15,8 @@ export const routes: Routes = [
     {path: 'registration', component: RegistrationComponent},
     {path: 'logout', component: LogoutComponent},
     {path: 'profile', component: ProfileComponent},
+    // Owner routeok
+    {path: 'manageaccommodations', component: ManageaccommodationsComponent},
     // Rendszer routeok
     {path: 'contact', component: ContactComponent},
     {path: 'adminpanel', component:AdminpanelComponent},

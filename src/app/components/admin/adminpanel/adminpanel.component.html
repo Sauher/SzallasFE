@@ -195,6 +195,7 @@
               <select class="form-select" id="userRole" [(ngModel)]="selectedUser.role" name="role">
                 <option value="admin">Admin</option>
                 <option value="user">Felhasználó</option>
+                <option value="owner">Tulajdonos</option>
               </select>
             </div>
             <button type="button" class="btn w-100" (click)="saveUserChanges()" [disabled]="loadingModify">
