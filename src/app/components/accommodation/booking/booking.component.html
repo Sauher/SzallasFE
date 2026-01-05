@@ -1,0 +1,43 @@
+<div class="p3 col-lg-3 col-sm-5 col-6 mb-3 mx-auto">
+    <!-- bootstrap -->
+    <!--accommodation,  name, email, phone, start date, duration -->
+
+    <form>
+        <div class="mb-3">
+            <label for="exampleInputAccommodation1" class="form-label">Szállás</label>
+            <select class="form-control" id="exampleInputAccommodation1">
+                <option *ngFor="let accommodation of accommodations" [value]="accommodation.id">
+                    {{ accommodation.name }}
+                </option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputName1" class="form-label">Név</label>
+            <input type="text" class="form-control" id="exampleInputName1" required>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" required>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPhone1" class="form-label">Telefonszám</label>
+            <input type="tel" class="form-control" id="exampleInputPhone1" required>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputStartDate1" class="form-label">Kezdő dátum</label>
+            <input type="date" class="form-control" id="exampleInputStartDate1" required>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputDuration1" class="form-label">Időtartam</label>
+            <input type="number" class="form-control" id="exampleInputDuration1" min="1" max="31" required>
+        </div>
+        <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
+            <label class="form-check-label" for="exampleCheck1">A foglalás véglegesítésével tudomásul veszem, hogy az
+                igénybe vett szolgáltatást <strong>a kezdő dátum előtt 24 órával lemondhatom</strong>. Azt követően a visszatérítés nem
+                teljes.</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Lefoglalom!</button>
+    </form>
+
+</div>

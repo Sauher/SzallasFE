@@ -8,6 +8,7 @@ import { AdminpanelComponent } from './components/admin/adminpanel/adminpanel.co
 import { AccommodationComponent } from './components/accommodation/accommodation/accommodation.component';
 import { ProfileComponent } from './components/user/profile/profile.component';
 import { ManageaccommodationsComponent } from './components/owner/manageaccomodations/manageaccommodations.component';
+import { BookingComponent } from './components/accommodation/booking/booking.component';
 
 export const routes: Routes = [
     // Felhasználói routeok
@@ -21,6 +22,7 @@ export const routes: Routes = [
     {path: 'contact', component: ContactComponent},
     {path: 'adminpanel', component:AdminpanelComponent},
     {path: 'accommodations', component:AccommodationComponent},
+    {path: 'booking', component:BookingComponent},
 
     
     //Kivételes routeok
