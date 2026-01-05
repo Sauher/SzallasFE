@@ -133,6 +133,37 @@ input[type="text"]{
 
 }
 
+.modalContent > img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    min-width: 300px;
+    object-fit: contain;
+    border: var(--main-font-color) 2px solid;
+}
+
+.right{
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-width: 330px;
+}
+
+#moreInfo{
+    background-color: var(--main-bg-color);
+    color: var(--main-font-color);
+    border: none;
+}
+
+.modal-content{
+    background-color: var(--secondary-light-color);
+    color: var(--main-bg-color);
+    border-radius: 15px;
+    width: 800px;
+    margin: 0 auto;
+}
+
 @media screen and (max-width: 710px) {
 
     .filterBTN{
