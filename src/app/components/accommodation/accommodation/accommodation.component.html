@@ -1,33 +1,73 @@
 <div class="mainAccDiv mx-auto">
-<!--filter section -->
-<div class="filterSection d-flex justify-content-center mb-3">
-    <input type="text" placeholder="Keress..." class="form-control w-50 col col-lg-2 sm-2 col-2" [(ngModel)]="searchTerm" (ngModelChange)="searchFilter()"/>
-    <div class="ms-2">
-            <button class="filterBTN" type="button" (click)="toggleOrder('price')">
+    <!--filter section -->
+    <div class="filterSection d-flex justify-content-center mb-3">
+        <input type="text" placeholder="Keress..." class="form-control w-50 col col-lg-2 sm-2 col-2"
+            [(ngModel)]="searchTerm" (ngModelChange)="searchFilter()" />
+        <div class="ms-2">
+            <button class="filterBTN" type="button" (click)="toggleOrder('basePrice')">
                 Ár alapján <i [ngClass]="priceOrder === 'asc' ? 'bi bi-caret-up' : 'bi bi-caret-down'"></i>
             </button>
             <button class="filterBTN" type="button" (click)="toggleOrder('capacity')">
                 Kapacitás alapján <i [ngClass]="capacityOrder === 'asc' ? 'bi bi-caret-up' : 'bi bi-caret-down'"></i>
             </button>
+        </div>
     </div>
+
+    <ul class="accommodationList d-flex flex-wrap justify-content-center mb-3 mx-auto">
+        <li *ngFor="let accommodation of accommodations">
+            <div class="cardDiv mx-auto">
+                <img [src]="accommodation.imageUrl" alt="">
+                <div class="properties">
+                    <p class="capacity"><span style="font-style: normal;">Ferőhely:</span> {{accommodation.capacity}} fő
+                    </p>
+                    <p class="address">
+                        {{accommodation.address}}
+                    </p>
+                    <hr>
+                    <p class="price">
+                        {{ accommodation.basePrice | currency:'EUR':'symbol':'1.0-0' }}
+                    </p>
+                </div>
+                <button class="more flex-end"><i class="bi bi-three-dots" data-bs-toggle="modal"
+                        data-bs-target="#moreInfo" (click)="openMoreInfo(accommodation)"></i></button>
+            </div>
+        </li>
+    </ul>
 </div>
 
-<ul class="accommodationList d-flex flex-wrap justify-content-center mb-3 mx-auto">
-    <li *ngFor="let accommodation of accommodations">
-        <div class="cardDiv mx-auto">
-            <img src="{{accommodation.imageUrl}}.png" alt="">
-            <div class="properties">
-                <p class="capacity"><span style="font-style: normal;">Ferőhely:</span> {{accommodation.capacity}} fő</p>
-                <p class="address">
-                    {{accommodation.address}}
-                </p>
-                <hr>
-                <p class="price">
-                    {{ accommodation.price | currency:'EUR':'symbol':'1.0-0' }}
-                </p>
-                <button class="more"><i class="bi bi-three-dots"></i></button>
+
+<!-- More info Modal -->
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary">
+    Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="moreInfo" tabindex="-1" aria-labelledby="moreInfoLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="moreInfoLabel">More Information</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="modalContent">
+                    <img [src]="selectedAccommodation?.imageUrl" alt="">
+                    <div>
+                        <h1>{{ selectedAccommodation?.name }}</h1>
+                        <hr>
+                        <p>{{ selectedAccommodation?.description }}</p>
+                        <p><strong>Address:</strong> {{ selectedAccommodation?.address }}</p>
+                        <p><strong>Capacity:</strong> {{ selectedAccommodation?.capacity }} people</p>
+                        <p><strong>Price:</strong> {{ selectedAccommodation?.basePrice | currency:'EUR':'symbol':'1.0-0'}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
             </div>
         </div>
-    </li>
-</ul>
+    </div>
 </div>

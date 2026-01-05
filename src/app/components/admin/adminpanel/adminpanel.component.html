@@ -5,11 +5,12 @@
             <h4 class="card-title mb-3">Szállások</h4>
 
             <div class="list-group mb-3">
-                <a *ngFor="let accomodation of accomodations | slice:0:5;let i = index"
+                <a *ngFor="let accommodation of accommodations | slice:0:5;let i = index"
                     class="list-group-item list-group-item-action">
                     <div class="d-flex w-100 justify-content-between">
-                        <h5 class="mb-1 mx-auto">{{accomodation.name}}</h5>
-                    </div>  
+                        <h5 class="mb-1 mx-auto">{{accommodation.name}}</h5>
+                    </div>
+                    <p class="mb-1">{{accommodation.description}}</p>
                 </a>
                 <p><small>Továbbiak megtekintéséhez kattints a kezelés gombra</small></p>
             </div>
@@ -77,12 +78,12 @@
       </div>
     </div>
   </div>
-<!-- Accomodation modal -->
- <div class="modal fade" id="AccomodationModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="AccomodationModalLabel" aria-hidden="true">
+<!-- Accommodation modal -->
+ <div class="modal fade" id="AccommodationModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="AccommodationModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-4" id="AccomodationModalLabel">Szállások kezelése</h1>
+          <h1 class="modal-title fs-4" id="AccommodationModalLabel">Szállások kezelése</h1>
 
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
@@ -98,13 +99,13 @@
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let accomodation of accomodations">
-                  <td>{{accomodation.name}}</td>
-                  <td>{{accomodation.address}}</td>
-                  <td>{{accomodation.price}} €</td>
+                <tr *ngFor="let accommodation of accommodations">
+                  <td>{{accommodation.name}}</td>
+                  <td>{{accommodation.address}}</td>
+                  <td>{{accommodation.basePrice}} €</td>
                   <td>
-                    <button class="btn btn-sm btn-warning me-2" (click)="modifyAccomodation(accomodation)">Módosítás</button>
-                    <button class="btn btn-sm btn-danger" (click)="deleteAccomodation(accomodation.id)">Törlés</button>
+                    <button class="btn btn-sm btn-warning me-2" (click)="modifyAccommodation(accommodation)">Módosítás</button>
+                    <button class="btn btn-sm btn-danger" (click)="deleteAccommodation(accommodation.id)">Törlés</button>
                   </td>
                 </tr>
               </tbody>
@@ -129,18 +130,18 @@
         <div class="modal-body">
           <form>
             <div class="mb-3">
-              <label for="accomodationName" class="form-label">Név</label>
-              <input type="text" class="form-control" id="accomodationName" placeholder="Név" [(ngModel)]="selectedAccomodation.name" name="name">
+              <label for="accommodationName" class="form-label">Név</label>
+              <input type="text" class="form-control" id="accommodationName" placeholder="Név" [(ngModel)]="selectedAccommodation.name" name="name">
             </div>
             <div class="mb-3">
-              <label for="accomodationAddress" class="form-label">Cím</label>
-              <input type="text" class="form-control" id="accomodationAddress" placeholder="Cím" [(ngModel)]="selectedAccomodation.address" name="address">
+              <label for="accommodationAddress" class="form-label">Cím</label>
+              <input type="text" class="form-control" id="accommodationAddress" placeholder="Cím" [(ngModel)]="selectedAccommodation.address" name="address">
             </div>
             <div class="mb-3">
-              <label for="accomodationPrice" class="form-label">Ár (€)</label>
-              <input type="number" class="form-control" id="accomodationPrice" placeholder="Ár" [(ngModel)]="selectedAccomodation.price" name="price">
+              <label for="accommodationPrice" class="form-label">Ár (€)</label>
+              <input type="number" class="form-control" id="accommodationPrice" placeholder="Ár" [(ngModel)]="selectedAccommodation.basePrice" name="price">
             </div>
-            <button type="button" class="btn btn-primary w-100" (click)="saveAccomodationChanges()" [disabled]="loadingModify">
+            <button type="button" class="btn btn-primary w-100" (click)="saveAccommodationChanges()" [disabled]="loadingModify">
               <span *ngIf="loadingModify">
                 <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
                 Mentés...
@@ -154,5 +155,4 @@
         </div>
       </div>
     </div>
-  </div>
 </div>
