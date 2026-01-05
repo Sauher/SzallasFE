@@ -6,11 +6,15 @@ import { LogoutComponent } from './components/user/logout/logout.component';
 import { ContactComponent } from './components/system/contact/contact.component';
 import { AdminpanelComponent } from './components/admin/adminpanel/adminpanel.component';
 import { AccommodationComponent } from './components/accommodation/accommodation/accommodation.component';
+import { ProfileComponent } from './components/user/profile/profile.component';
 
 export const routes: Routes = [
+    // Felhasználói routeok
     {path: 'login', component: LoginComponent},
     {path: 'registration', component: RegistrationComponent},
     {path: 'logout', component: LogoutComponent},
+    {path: 'profile', component: ProfileComponent},
+    // Rendszer routeok
     {path: 'contact', component: ContactComponent},
     {path: 'adminpanel', component:AdminpanelComponent},
     {path: 'accommodations', component:AccommodationComponent},
