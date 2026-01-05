@@ -26,6 +26,17 @@ export class AdminpanelComponent {
   UserModal: any
   AccommodationModal: any
   ModifyModal: any
+  ModifyUserModal: any
+
+  selectedUser: User = {
+    id: 0,
+    name: '',
+    password: '',
+    email: '',
+    phone: '',
+    address: '',
+    role: 'user',
+  };
   selectedAccommodation: Accommodation = {
     id: 0,
     name: '',
@@ -44,9 +55,11 @@ export class AdminpanelComponent {
   accommodations: Accommodation[] = [];
   ngOnInit(): void {
     this.getUsers(); 
-    this.AccommodationModal = new bootstrap.Modal('#AccommodationModal')
-    this.UserModal = new bootstrap.Modal('#UserModal')
-    this.ModifyModal = new bootstrap.Modal('#ModifyModal')
+    this.getAccommodations();
+    this.AccommodationModal = new bootstrap.Modal('#AccommodationModal');
+    this.UserModal = new bootstrap.Modal('#UserModal');
+    this.ModifyModal = new bootstrap.Modal('#ModifyModal');
+    this.ModifyUserModal = new bootstrap.Modal('#ModifyUserModal');
   }
   getUsers(){
     this.api.SelectAll('users').then(res =>{
@@ -59,8 +72,8 @@ export class AdminpanelComponent {
   }
   );
   }
-  getAccomodations(){
-    this.api.SelectAll('accomodations').then(res =>{
+  getAccommodations(){
+    this.api.SelectAll('accommodations').then(res =>{
       if(res.status == 500){
         this.message.show('danger','Hiba',res.message!)
         return []
@@ -71,8 +84,8 @@ export class AdminpanelComponent {
   );
   }
   modifyUser(user: User) {
-    // TODO: Implement user modification logic
-    this.message.show('info', 'Módosítás', `Módosítás alatt: ${user.name}`);
+    this.selectedUser = { ...user };
+    this.ModifyUserModal.show();
   }
 
   deleteUser(userId: number | undefined) {
@@ -88,7 +101,7 @@ export class AdminpanelComponent {
           return;
         }
         this.message.show('success', 'Siker', res.message || 'Felhasználó sikeresen törölve');
-        this.getUsers(); // Refresh the user list
+        this.getUsers(); 
       });
     }
   }
@@ -103,11 +116,25 @@ export class AdminpanelComponent {
     this.api.Update('accommodations', this.selectedAccommodation.id, this.selectedAccommodation).then(res => {
       this.loadingModify = false;
       if (res.status == 500) {
-        this.message.show('danger', 'Hiba', res.message || 'Hiba történt a módosításkor');
+        this.message.show('danger', 'Hiba', 'Hiba történt a módosításkor');
         return;
       }
-      this.message.show('success', 'Siker', res.message || 'Szállás sikeresen módosítva');
-      this.getAccomodations();
+      this.message.show('success', 'Siker',  'Szállás sikeresen módosítva');
+      this.getAccommodations();
+      this.ModifyModal.hide();
+    });
+  }
+  saveUserChanges() {
+    this.loadingModify = true;
+    this.api.Update('users', this.selectedUser.id!, this.selectedUser).then(res => {
+      this.loadingModify = false;
+      if (res.status == 500) {
+        this.message.show('danger', 'Hiba', 'Hiba történt a módosításkor');
+        return;
+      }
+      this.message.show('success', 'Siker',  'Felhasználó sikeresen módosítva');
+      this.getUsers();
+      this.ModifyUserModal.hide();
     });
   }
 
@@ -128,4 +155,5 @@ export class AdminpanelComponent {
       });
     }
   }
+
 }

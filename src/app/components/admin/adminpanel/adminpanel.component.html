@@ -16,7 +16,7 @@
             </div>
 
 
-            <a class="btn" data-bs-toggle="modal" data-bs-target="#AccomodationModal">Kezelés</a>
+            <a class="btn" data-bs-toggle="modal" data-bs-target="#AccommodationModal">Kezelés</a>
         </div>
     </div>
 
@@ -29,6 +29,7 @@
                     <div class="d-flex w-100 justify-content-between">
                         <h5 class="mb-1 mx-auto">{{user.name}}</h5>
                     </div>
+                    <p class="mb-1">Szerepkör: {{user.role}}</p>
                 </a>
                 <p><small>Továbbiak megtekintéséhez kattints a kezelés gombra</small></p>
             </div>
@@ -95,6 +96,8 @@
                   <th>Név</th>
                   <th>Cím</th>
                   <th>Ár</th>
+                  <th>Férőhelyek</th>
+                  <th>Leírás</th>
                   <th>Műveletek</th>
                 </tr>
               </thead>
@@ -103,6 +106,8 @@
                   <td>{{accommodation.name}}</td>
                   <td>{{accommodation.address}}</td>
                   <td>{{accommodation.basePrice}} €</td>
+                  <td>{{accommodation.capacity}}</td>
+                  <td>{{accommodation.description}}</td>
                   <td>
                     <button class="btn btn-sm btn-warning me-2" (click)="modifyAccommodation(accommodation)">Módosítás</button>
                     <button class="btn btn-sm btn-danger" (click)="deleteAccommodation(accommodation.id)">Törlés</button>
@@ -141,7 +146,16 @@
               <label for="accommodationPrice" class="form-label">Ár (€)</label>
               <input type="number" class="form-control" id="accommodationPrice" placeholder="Ár" [(ngModel)]="selectedAccommodation.basePrice" name="price">
             </div>
-            <button type="button" class="btn btn-primary w-100" (click)="saveAccommodationChanges()" [disabled]="loadingModify">
+            <div class="mb-3">
+              <label for="accommodationCapacity" class="form-label">Férőhelyek</label>
+              <input type="number" class="form-control" id="accommodationCapacity" placeholder="Férőhelyek" [(ngModel)]="selectedAccommodation.capacity" name="capacity">
+            </div>
+            <div class="mb-3">
+              <label for="accommodationDescription" class="form-label">Leírás</label>
+              <textarea class="form-control" id="accommodationDescription" placeholder="Leírás" [(ngModel)]="selectedAccommodation.description" name="description"></textarea>
+            </div>
+
+            <button type="button" class="btn  w-100" (click)="saveAccommodationChanges()" [disabled]="loadingModify">
               <span *ngIf="loadingModify">
                 <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
                 Mentés...
@@ -155,4 +169,47 @@
         </div>
       </div>
     </div>
+  </div>
+
+  <!--ModifyUser Modal-->
+  <div class="modal fade" id="ModifyUserModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="ModifyUserModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-4" id="ModifyUserModalLabel">Felhasználó módosítása</h1>
+
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="userName" class="form-label">Név</label>
+              <input type="text" class="form-control" id="userName" placeholder="Név" [(ngModel)]="selectedUser.name" name="name">
+            </div>
+            <div class="mb-3">
+              <label for="userEmail" class="form-label">Email</label>
+              <input type="email" class="form-control" id="userEmail" placeholder="Email" [(ngModel)]="selectedUser.email" name="email">
+            </div>
+            <div class="mb-3">
+              <label for="userRole" class="form-label">Szerepkör</label>
+              <select class="form-select" id="userRole" [(ngModel)]="selectedUser.role" name="role">
+                <option value="admin">Admin</option>
+                <option value="user">Felhasználó</option>
+              </select>
+            </div>
+            <button type="button" class="btn w-100" (click)="saveUserChanges()" [disabled]="loadingModify">
+              <span *ngIf="loadingModify">
+                <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                Mentés...
+              </span>
+              <span *ngIf="!loadingModify">Változások mentése</span>
+            </button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn" data-bs-dismiss="modal">Mégsem</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

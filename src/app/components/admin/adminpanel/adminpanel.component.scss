@@ -9,7 +9,7 @@
 }
 .btn:hover{
     background-color: var(--secondary-light-color);
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
 .admin-cards-row{
@@ -55,6 +55,12 @@
   z-index: 1;
   text-decoration: none;
   background-color: var(--secondary-color) !important;
+}
+#AccommodationModal .modal-dialog{
+
+    width: 95%;
+    max-width: 95%;
+    margin: 1.75rem auto;
 }
 
 #UserModal .modal-dialog{
@@ -104,6 +110,7 @@
 }
 
 .table thead th {
+    color: white;
     border-color: var(--secondary-color);
     background-color: var(--main-bg-color);
     padding: 0.75rem;
@@ -111,6 +118,7 @@
 }
 
 .table tbody td {
+    color: white;
     vertical-align: middle;
     padding: 0.75rem;
     border-color: var(--secondary-color);
@@ -153,4 +161,10 @@
 .table-responsive {
     max-height: 500px;
     overflow-y: auto;
+}
+#ModifyModal{
+    background-color: var(--main-bg-color);
+}
+#ModifyUserModal{
+    background-color: var(--main-bg-color);
 }
