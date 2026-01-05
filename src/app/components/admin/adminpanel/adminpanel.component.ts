@@ -5,12 +5,13 @@ import { RouterModule } from '@angular/router';
 import { User } from '../../../interfaces/user';
 import { APIService } from '../../../services/api.service';
 import { MessageService } from '../../../services/message.service';
+import { FormsModule } from '@angular/forms';
 declare var bootstrap: any;
 
 @Component({
   selector: 'app-adminpanel',
   standalone: true,
-  imports: [CommonModule,RouterModule],
+  imports: [CommonModule,RouterModule,FormsModule],
   templateUrl: './adminpanel.component.html',
   styleUrl: './adminpanel.component.scss'
 })
@@ -24,6 +25,17 @@ export class AdminpanelComponent {
   users: User[] = [];
   UserModal: any
   AccomodationModal: any
+  ModifyModal: any
+  selectedAccomodation: accomodation = {
+    id: 0,
+    name: '',
+    address: '',
+    capacity: 0,
+    price: 0,
+    imageUrl: ''
+  }
+  loadingModify = false;
+
 
   accomodations : accomodation[] = [
     { id: 1, name: 'Hotel Sunshine', address: '123 Sunny St, Beach City', capacity: 2, price: 120, imageUrl: 'logo' },
@@ -49,7 +61,7 @@ export class AdminpanelComponent {
     this.getUsers(); 
     this.AccomodationModal = new bootstrap.Modal('#AccomodationModal')
     this.UserModal = new bootstrap.Modal('#UserModal')
-    
+    this.ModifyModal = new bootstrap.Modal('#ModifyModal')
   }
   getUsers(){
     this.api.SelectAll('users').then(res =>{
@@ -61,5 +73,75 @@ export class AdminpanelComponent {
       return
   }
   );
+  }
+  getAccomodations(){
+    this.api.SelectAll('accomodations').then(res =>{
+      if(res.status == 500){
+        this.message.show('danger','Hiba',res.message!)
+        return []
+      }
+      this.accomodations = res.data
+      return
+  }
+  );
+  }
+  modifyUser(user: User) {
+    // TODO: Implement user modification logic
+    this.message.show('info', 'Módosítás', `Módosítás alatt: ${user.name}`);
+  }
+
+  deleteUser(userId: number | undefined) {
+    if (!userId) {
+      this.message.show('danger', 'Hiba', 'Érvénytelen felhasználó ID');
+      return;
+    }
+
+    if (confirm('Biztosan törölni szeretnéd ezt a felhasználót?')) {
+      this.api.Delete('users', userId).then(res => {
+        if (res.status == 500) {
+          this.message.show('danger', 'Hiba', res.message || 'Hiba történt a törléskor');
+          return;
+        }
+        this.message.show('success', 'Siker', res.message || 'Felhasználó sikeresen törölve');
+        this.getUsers(); // Refresh the user list
+      });
+    }
+  }
+
+  modifyAccomodation(accomodation: accomodation) {
+    this.selectedAccomodation = { ...accomodation };
+    this.ModifyModal.show();
+    
+  }
+  saveAccomodationChanges() {
+    this.loadingModify = true;
+    this.api.Update('accomodations', this.selectedAccomodation.id, this.selectedAccomodation).then(res => {
+      this.loadingModify = false;
+      if (res.status == 500) {
+        this.message.show('danger', 'Hiba', res.message || 'Hiba történt a módosításkor');
+        return;
+      }
+      this.message.show('success', 'Siker', res.message || 'Szállás sikeresen módosítva');
+      this.getAccomodations();
+    });
+  }
+
+  deleteAccomodation(accomodationId: number | undefined) {
+    if (!accomodationId) {
+      this.message.show('danger', 'Hiba', 'Érvénytelen szállás ID');
+      return;
+    }
+
+    if (confirm('Biztosan törölni szeretnéd ezt a szállást?')) {
+      this.api.Delete('accomodations', accomodationId).then(res => {
+        if (res.status == 500) {
+          this.message.show('danger', 'Hiba', res.message || 'Hiba történt a törléskor');
+          return;
+        }
+        this.message.show('success', 'Siker', res.message || 'Szállás sikeresen törölve');
+        // Remove from local array
+        this.accomodations = this.accomodations.filter(a => a.id !== accomodationId);
+      });
+    }
   }
 }

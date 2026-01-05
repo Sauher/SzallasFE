@@ -12,7 +12,6 @@
     transform: scale(1.1);
 }
 
-/* Admin panel layout: place cards in a row and allow wrapping on small screens */
 .admin-cards-row{
     display: flex;
     flex-wrap: wrap;
@@ -42,6 +41,15 @@
     color: var(--main-font-color) !important;
 }
 
+.list-group-item:first-child {
+  border-top-left-radius: 0.375rem;
+  border-top-right-radius: 0.375rem;
+}
+
+.list-group-item:last-of-type {
+  border-bottom-left-radius: 0.375rem;
+  border-bottom-right-radius: 0.375rem;
+}
 
 .list-group-item-action:not(.active):hover {
   z-index: 1;
@@ -49,9 +57,8 @@
   background-color: var(--secondary-color) !important;
 }
 
-/* Make the User modal wider but responsive */
 #UserModal .modal-dialog{
-    /* default for small screens */
+
     width: 95%;
     max-width: 95%;
     margin: 1.75rem auto;
@@ -60,29 +67,90 @@
 @media (min-width: 768px) {
     #UserModal .modal-dialog{
         width: 90%;
-        max-width: 900px; /* medium screens */
+        max-width: 900px; 
     }
      #AccomodationModal .modal-dialog{
         width: 90%;
-        max-width: 900px; /* medium screens */
+        max-width: 900px; 
     }
 }
 
 @media (min-width: 1200px) {
     #UserModal .modal-dialog{
         width: 80%;
-        max-width: 1200px; /* large screens */
+        max-width: 1200px; 
     }
     #AccomodationModal .modal-dialog{
         width: 80%;
-        max-width: 1200px; /* large screens */
+        max-width: 1200px; 
     }
 }
 
-/* slightly adjust modal-content padding/appearance */
 #UserModal .modal-content{
     padding: 0.5rem;
 }
 #AccomodationModal .modal-content{
     padding: 0.5rem;
+}
+
+.table {
+    color: var(--main-font-color);
+    margin-bottom: 0;
+}
+
+.table thead {
+    background-color: var(--main-bg-color);
+    color: var(--main-font-color);
+}
+
+.table thead th {
+    border-color: var(--secondary-color);
+    background-color: var(--main-bg-color);
+    padding: 0.75rem;
+    font-weight: 600;
+}
+
+.table tbody td {
+    vertical-align: middle;
+    padding: 0.75rem;
+    border-color: var(--secondary-color);
+    background-color: rgba(var(--input-color), 0.5);
+}
+
+.table tbody tr:hover {
+    background-color: rgba(var(--secondary-light-color), 0.2);
+}
+
+.btn-warning {
+    background-color: #ffc107 !important;
+    border-color: #ffc107 !important;
+    color: #000 !important;
+}
+
+.btn-warning:hover {
+    background-color: #ffb800 !important;
+    border-color: #ffb800 !important;
+    transform: scale(1.05);
+}
+
+.btn-danger {
+    background-color: #dc3545 !important;
+    border-color: #dc3545 !important;
+    color: #fff !important;
+}
+
+.btn-danger:hover {
+    background-color: #c82333 !important;
+    border-color: #c82333 !important;
+    transform: scale(1.05);
+}
+
+.btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+}
+
+.table-responsive {
+    max-height: 500px;
+    overflow-y: auto;
 }

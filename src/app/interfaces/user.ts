@@ -8,7 +8,6 @@ export interface User {
   address?: string;
   role: string;
   createdAt?: string;
-  last?: string;
   status?: boolean;
   
 }
