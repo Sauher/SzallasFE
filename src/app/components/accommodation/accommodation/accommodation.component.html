@@ -38,12 +38,6 @@
 
 <!-- More info Modal -->
 
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary">
-    Launch demo modal
-</button>
-
-<!-- Modal -->
 <div class="modal fade" id="moreInfo" tabindex="-1" aria-labelledby="moreInfoLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -58,16 +52,17 @@
                         <h1>{{ selectedAccommodation?.name }}</h1>
                         <hr>
                         <p>{{ selectedAccommodation?.description }}</p>
-                        <p><strong>Address:</strong> {{ selectedAccommodation?.address }}</p>
-                        <p><strong>Capacity:</strong> {{ selectedAccommodation?.capacity }} people</p>
-                        <p><strong>Price:</strong> {{ selectedAccommodation?.basePrice | currency:'EUR':'symbol':'1.0-0'}}</p>
+                        <p><strong>Cím:</strong> {{ selectedAccommodation?.address }}</p>
+                        <p><strong>Férőhelyek száma:</strong> {{ selectedAccommodation?.capacity }} people</p>
+                        <p class="modalPrice">{{ selectedAccommodation?.basePrice | currency:'EUR':'symbol':'1.0-0'}}</p>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-danger-emphasis closeModal" data-bs-dismiss="modal"><i class="bi bi-x"></i> Bezárás</button>
+                <button type="button" class="btn btn-primary get"><i class="bi bi-house-add"></i> Foglalás</button>
             </div>
         </div>
     </div>
 </div>
+
