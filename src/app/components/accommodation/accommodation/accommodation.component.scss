@@ -35,8 +35,9 @@
 .cardDiv img{
     height: 150px;
     border-radius: 10px;
-    object-fit: contain;
-    width: 100%;
+    object-fit: cover;
+    width: 250px;
+    border-radius: 10px 10px 0 0;
 
 }
 
@@ -67,8 +68,9 @@
 }
 
 .more{
-    align-self: flex-end;
-    margin-top: auto;
+    position: relative;
+    bottom: -40px;
+    right: -90px;
 }
 
 p{
@@ -120,6 +122,15 @@ input[type="text"]{
     padding: 8px 16px;
     width: 30% !important;
     align-self: flex-start !important;
+}
+
+.modalContent {
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+
 }
 
 @media screen and (max-width: 710px) {
