@@ -158,8 +158,9 @@ input[type="text"]{
 }
 
 .modal-content{
-    background-color: var(--secondary-light-color);
-    color: var(--main-bg-color);
+    background: linear-gradient(var(--secondary-color), var(--secondary-light-color));
+    color: var(--main-font-color);
+    text-shadow: 0 0 5px var(--main-bg-color);
     border-radius: 15px;
     width: 800px;
     margin: 0 auto;
