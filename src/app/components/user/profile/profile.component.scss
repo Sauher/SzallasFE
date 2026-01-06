@@ -6,9 +6,10 @@
 
 .profileDiv {
   margin-top: 20px;
-  color: var(--main-bg-color);
+  color: white;
+  text-shadow: 0 0 5px var(--main-bg-color);
   border-radius: 8px;
-  background-color: rgba(var(--secondary-light-color), 0.05);
+  background: linear-gradient(var(--secondary-color),var(--secondary-light-color));
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -38,7 +39,7 @@ input[type="text"]:focus {
 }
 
 .form-label {
-  color: var(--main-bg-color);
+  color: var(--main-font-color);
   font-weight: 500;
   margin-bottom: 0.5rem;
 }

@@ -4,13 +4,20 @@
 }
 .btn{
     background-color: var(--input-color);
-    color: var(--main-font-color);
+    color: white;
+    text-shadow: 0 0 5px var(--main-bg-color);
     transition: 500ms;
+
 }
+.btn-close{
+    filter: invert(1);
+}
+
 .btn:hover{
     background-color: var(--secondary-light-color);
-    transform: scale(1.05);
-}
+    text-shadow: 0 0 5px var(--main-font-color);
+    transform: scale(1.02);
+}   
 
 .admin-cards-row{
     display: flex;
@@ -32,9 +39,16 @@
     filter: invert(1);
 }
 .admin-card{
+    color: white;
+    text-shadow: 0 0 5px var(--main-bg-color);
     z-index: 0;
     flex: 0 1 300px; 
     max-width: 350px;
+}
+.card-title{
+    color: white;
+    text-shadow: 0 0 5px var(--main-bg-color);
+    font-weight: bolder;
 }
 .list-group-item{
     background-color: var(--input-color);
@@ -56,6 +70,19 @@
   text-decoration: none;
   background-color: var(--secondary-color) !important;
 }
+
+#AccommodationModalLabel{
+    color: white;
+    text-shadow: 0 0 5px var(--main-bg-color);
+    font-weight: bolder;
+}
+
+#UserModalLabel{
+    color: white;
+    text-shadow: 0 0 5px var(--main-bg-color);
+    font-weight: bolder;
+}
+
 #AccommodationModal .modal-dialog{
 
     width: 95%;
@@ -100,13 +127,16 @@
 }
 
 .table {
-    color: var(--main-font-color);
+    color: white;
+    text-shadow: 0 0 5px var(--main-bg-color);
     margin-bottom: 0;
 }
 
 .table thead {
     background-color: var(--main-bg-color);
-    color: var(--main-font-color);
+     color: white;
+    text-shadow: 0 0 5px var(--main-bg-color);
+    font-weight: bold;
 }
 
 .table thead th {
@@ -167,4 +197,14 @@
 }
 #ModifyUserModal{
     background-color: var(--main-bg-color);
+}
+#ModifyModalLabel{
+    color: white;
+    text-shadow: 0 0 5px var(--main-bg-color);
+    font-weight: bolder;
+}
+#ModifyUserModalLabel{
+    color: white;
+    text-shadow: 0 0 5px var(--main-bg-color);
+    font-weight: bolder;
 }

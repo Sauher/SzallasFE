@@ -7,5 +7,5 @@ export interface Accommodation {
     basePrice: number;
     active: boolean;
     createdAt: Date;
-    imageUrl: string;
+    imageUrl?: string;
 }

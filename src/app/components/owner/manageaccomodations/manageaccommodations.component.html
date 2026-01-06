@@ -1,4 +1,101 @@
+<div class="mainAccDiv mx-auto">
 
-<h1>Szállások kezelése</h1>
-<p>Ebben a szekcióban kezelheti a szállásokat.</p>
+    <ul class="accommodationList d-flex flex-wrap justify-content-center mb-3 mx-auto">
+        <li *ngFor="let accommodation of accommodations">
+            <div class="cardDiv mx-auto">
+                <img [src]="accommodation.imageUrl" alt="">
+                <div class="properties">
+                    <p class="capacity"><span style="font-style: normal;">Ferőhely:</span> {{accommodation.capacity}} fő
+                    </p>
+                    <p class="address">
+                        {{accommodation.address}}
+                    </p>
+                    <hr>
+                    <p class="price">
+                        {{ accommodation.basePrice | currency:'EUR':'symbol':'1.0-0' }}
+                    </p>
+                </div>
+                <button class="more flex-end"><i class="bi bi-three-dots" (click)="openMoreInfo(accommodation)"></i></button>
+            </div>
+        </li>
+    </ul>
+</div>
+
+
+<!-- More info Modal -->
+
+<div class="modal fade" id="moreInfo" tabindex="-1" aria-labelledby="moreInfoLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="moreInfoLabel">More Information</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="modalContent">
+                    <img [src]="selectedAccommodation.imageUrl" alt="">
+                    <div class="right">
+                        <h1>{{ selectedAccommodation.name }}</h1>
+                        <hr>
+                        <p>{{ selectedAccommodation.description }}</p>
+                        <p><strong>Cím:</strong> {{ selectedAccommodation.address }}</p>
+                        <p><strong>Férőhelyek száma:</strong> {{ selectedAccommodation.capacity }} people</p>
+                        <p class="modalPrice">{{ selectedAccommodation.basePrice | currency:'EUR':'symbol':'1.0-0'}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger-emphasis closeModal" data-bs-dismiss="modal"><i class="bi bi-x"></i> Bezárás</button>
+                <button type="button" class="btn btn-primary get" (click)="modifyAccommodation(selectedAccommodation)"><i class="bi bi-pencil"></i> Módosítás</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modify modal -->
+   <div class="modal fade" id="ModifyModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="ModifyModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-4" id="ModifyModalLabel">Szállás módosítása</h1>
+
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="accommodationName" class="form-label">Név</label>
+              <input type="text" class="form-control" id="accommodationName" placeholder="Név" [(ngModel)]="selectedAccommodation.name" name="name">
+            </div>
+            <div class="mb-3">
+              <label for="accommodationAddress" class="form-label">Cím</label>
+              <input type="text" class="form-control" id="accommodationAddress" placeholder="Cím" [(ngModel)]="selectedAccommodation.address" name="address">
+            </div>
+            <div class="mb-3">
+              <label for="accommodationPrice" class="form-label">Ár (€)</label>
+              <input type="number" class="form-control" id="accommodationPrice" placeholder="Ár" [(ngModel)]="selectedAccommodation.basePrice" name="price">
+            </div>
+            <div class="mb-3">
+              <label for="accommodationCapacity" class="form-label">Férőhelyek</label>
+              <input type="number" class="form-control" id="accommodationCapacity" placeholder="Férőhelyek" [(ngModel)]="selectedAccommodation.capacity" name="capacity">
+            </div>
+            <div class="mb-3">
+              <label for="accommodationDescription" class="form-label">Leírás</label>
+              <textarea class="form-control" id="accommodationDescription" placeholder="Leírás" [(ngModel)]="selectedAccommodation.description" name="description"></textarea>
+            </div>
+
+            <button type="button" class="btn  w-100" (click)="saveAccommodationChanges()" [disabled]="loadingModify">
+              <span *ngIf="loadingModify">
+                <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                Mentés...
+              </span>
+              <span *ngIf="!loadingModify">Változások mentése</span>
+            </button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn" data-bs-dismiss="modal">Mégsem</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
