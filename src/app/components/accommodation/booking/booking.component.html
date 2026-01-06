@@ -5,8 +5,8 @@
     <form>
         <div class="mb-3">
             <label for="exampleInputAccommodation1" class="form-label">Szállás</label>
-            <select class="form-control" id="exampleInputAccommodation1">
-                <option *ngFor="let accommodation of accommodations" [value]="accommodation.id">
+            <select class="form-control" id="exampleInputAccommodation1" name="accommodation" [(ngModel)]="selectedAccommodationId" (ngModelChange)="onAccommodationChange($event)">
+                <option *ngFor="let accommodation of accommodations" [ngValue]="accommodation.id">
                     {{ accommodation.name }}
                 </option>
             </select>
@@ -25,7 +25,7 @@
         </div>
         <div class="mb-3">
             <label for="exampleInputStartDate1" class="form-label">Kezdő dátum</label>
-            <input type="date" class="form-control" id="exampleInputStartDate1" required>
+            <input type="date" class="form-control" id="exampleInputStartDate1" required [min]="minStartDate">
         </div>
         <div class="mb-3">
             <label for="exampleInputDuration1" class="form-label">Időtartam</label>

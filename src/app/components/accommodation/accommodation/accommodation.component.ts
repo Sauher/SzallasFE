@@ -1,14 +1,16 @@
 import { CommonModule, CurrencyPipe } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { APIService } from '../../../services/api.service';
 import { MessageService } from '../../../services/message.service';
 import { Accommodation } from '../../../interfaces/accommodation';
+import { Router, RouterModule } from '@angular/router';
+declare var bootstrap: any;
 
 @Component({
   selector: 'app-accommodation',
   standalone: true,
-  imports: [CurrencyPipe, CommonModule, FormsModule],
+  imports: [CurrencyPipe, CommonModule, FormsModule, RouterModule],
   templateUrl: './accommodation.component.html',
   styleUrls: ['./accommodation.component.scss']
 })
@@ -16,19 +18,24 @@ export class AccommodationComponent implements OnInit {
 
   constructor(
     private apiService: APIService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
 
+    this.modal = new bootstrap.Modal('#moreInfo');
     this.getAccommodations();
 
   }
+
+  modal: any;
 
   selectedAccommodation: Accommodation | null = null;
 
   openMoreInfo(accommodation: Accommodation): void {
     this.selectedAccommodation = accommodation;
+    this.modal.show();
   }
 
   searchTerm: string = '';
@@ -54,6 +61,8 @@ export class AccommodationComponent implements OnInit {
 
   }
 
+
+
   searchFilter(): void {
     const originalAccommodations = this.accommodations;
     const term = this.searchTerm.toLowerCase();
@@ -62,7 +71,6 @@ export class AccommodationComponent implements OnInit {
 
     );
     if (this.accommodations.length === 0) {
-      // Optionally, handle the case where no accommodations match the search term
       this.accommodations = originalAccommodations;
 
       this.ngOnInit();
@@ -73,7 +81,6 @@ export class AccommodationComponent implements OnInit {
 
 
   orderBy(property: string, order: 'asc' | 'desc'): void {
-    // create a sorted copy instead of mutating in place
     const sorted = [...this.accommodations].sort((a, b) => {
       const av = a[property as keyof typeof a] as any;
       const bv = b[property as keyof typeof b] as any;
@@ -97,6 +104,17 @@ export class AccommodationComponent implements OnInit {
     } else {
       const next = this.capacityOrder === 'asc' ? 'desc' : 'asc';
       this.orderBy('capacity', next);
+    }
+  }
+
+  @Output() accommodationSelected = (accommodation: Accommodation) => {
+    this.selectedAccommodation = accommodation;
+  }
+
+  booking() {
+    if (this.selectedAccommodation) {
+  this.modal.hide();
+  this.router.navigate(['/booking'], { queryParams: { id: this.selectedAccommodation.id } });
     }
   }
 }
