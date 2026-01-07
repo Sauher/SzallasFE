@@ -1,51 +1,77 @@
-<div class="p3 col-lg-3 col-sm-5 col-6 mb-3 mx-auto">
-    <!-- bootstrap -->
-    <!--accommodation,  name, email, phone, start date, duration -->
-
-    <form>
-        <div class="mb-3">
-            <label for="exampleInputAccommodation1" class="form-label">Szállás</label>
-            <select class="form-control" id="exampleInputAccommodation1" name="accommodation"
-                [(ngModel)]="selectedAccommodationId" (ngModelChange)="onAccommodationChange($event)">
-                <option *ngFor="let accommodation of accommodations" [ngValue]="accommodation.id">
-                    {{ accommodation.name }}
-                </option>
+<div class="bookingContainer mb-3 mx-auto">
+  <h2 class="text-center mb-4">Foglalás</h2>
+  
+  <div class="row">
+    <div class="col-lg-6 col-md-8 col-sm-10 mx-auto">
+      <div class="bookingDiv p-4 d-flex flex-column">
+        <h4 class="text-center mb-3">Szállás foglalása</h4>
+        <hr>
+        <div class="infos mb-3">
+          <p class="text-center fs-6">Válassza ki a kívánt szállást és adja meg foglalási adatait.</p>
+        </div>
+        
+        <form class="d-flex flex-column flex-grow-1">
+          <!-- Accommodation select -->
+          <div class="mb-3">
+            <label for="bookingAccommodation" class="form-label">Szállás</label>
+            <select class="form-select" id="bookingAccommodation" [(ngModel)]="selectedAccommodationId" 
+              (ngModelChange)="onAccommodationChange($event)" name="accommodation" required>
+              <option disabled [ngValue]="null" selected>Válasszon szállást</option>
+              <option *ngFor="let accommodation of accommodations" [ngValue]="accommodation.id">
+                {{ accommodation.name }}
+              </option>
             </select>
-        </div>
-        <div class="mb-3">
-            <label for="exampleInputName1" class="form-label">Név</label>
-            <input type="text" class="form-control" id="exampleInputName1" name="name" [(ngModel)]="name" required>
-        </div>
-        <div class="mb-3">
-            <label for="exampleInputPhone1" class="form-label">Telefonszám</label>
-            <input type="tel" class="form-control" id="exampleInputPhone1" name="phone" [(ngModel)]="phone" required>
-        </div>
-        <div class="mb-3">
-            <label for="exampleInputStartDate1" class="form-label">Kezdő dátum</label>
-            <input type="date" class="form-control" id="exampleInputStartDate1" name="dateOfStart"
-                [(ngModel)]="dateOfStart" required [min]="minStartDate">
-        </div>
-        <div class="mb-3">
-            <label for="exampleInputDuration1" class="form-label">Időtartam</label>
-            <input type="number" class="form-control" id="exampleInputDuration1" name="duration" [(ngModel)]="duration"
-                min="1" max="31" required>
-        </div>
-        <div class="mb-3 form-check">
-            <input type="checkbox" class="form-check-input" id="accept" name="accept" required [(ngModel)]="accept">
-            <label class="form-check-label" for="accept">A foglalás véglegesítésével tudomásul veszem, hogy az
-                igénybe vett szolgáltatást <strong>a kezdő dátum előtt 24 órával lemondhatom</strong>. Azt követően a
-                visszatérítés nem
-                teljes.</label>
-        </div>
-        <button type="submit" class="btn btn-primary" (click)="openBookingSummaryModal()">Lefoglalom!</button>
-    </form>
+          </div>
 
+          <!-- Name field -->
+          <div class="mb-3">
+            <label for="bookingName" class="form-label">Teljes név</label>
+            <input type="text" class="form-control" id="bookingName" placeholder="Teljes név" name="name" 
+              [(ngModel)]="name" required>
+          </div>
+
+          <!-- Phone field -->
+          <div class="mb-3">
+            <label for="bookingPhone" class="form-label">Telefonszám</label>
+            <input type="tel" class="form-control" id="bookingPhone" placeholder="Telefonszám" name="phone" 
+              [(ngModel)]="phone" required>
+          </div>
+
+          <!-- Start date field -->
+          <div class="mb-3">
+            <label for="bookingStartDate" class="form-label">Kezdő dátum</label>
+            <input type="date" class="form-control" id="bookingStartDate" name="dateOfStart"
+              [(ngModel)]="dateOfStart" required [min]="minStartDate">
+          </div>
+
+          <!-- Duration field -->
+          <div class="mb-3">
+            <label for="bookingDuration" class="form-label">Időtartam (napok)</label>
+            <input type="number" class="form-control" id="bookingDuration" name="duration" 
+              [(ngModel)]="duration" min="1" max="31" required>
+          </div>
+
+          <!-- Terms checkbox -->
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="bookingAccept" name="accept" 
+              required [(ngModel)]="accept">
+            <label class="form-check-label" for="bookingAccept">
+              A foglalás véglegesítésével tudomásul veszem, hogy az igénybe vett szolgáltatást 
+              <strong>a kezdő dátum előtt 24 órával lemondhatom</strong>. Azt követően a visszatérítés nem teljes.
+            </label>
+          </div>
+
+          <button type="button" class="btn btn-primary w-100" (click)="openBookingSummaryModal()">Lefoglalom!</button>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- Booking Summary Modal -->
 <div class="modal fade" id="bookingSummaryModal" #bookingSummaryModal tabindex="-1"
     aria-labelledby="bookingSummaryModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="bookingSummaryModalLabel">Foglalás összegzése</h5>
@@ -57,14 +83,19 @@
                 <p><strong>Kezdő dátum:</strong> {{ bookingData.startDate | date }}</p>
                 <p><strong>Időtartam:</strong> {{ duration }} nap</p>
 
-                <p class="imp"><strong class="text-danger">Fontos:</strong> A foglalás véglegesítésével tudomásul veszem, hogy az
+                <div class="imp mt-3 p-3">
+                  <p class="mb-0">
+                    <strong class="text-danger">Fontos:</strong> A foglalás véglegesítésével tudomásul veszem, hogy az
                     igénybe vett szolgáltatást <strong>a kezdő dátum előtt 24 órával lemondhatom</strong>. Azt követően
                     a visszatérítés nem teljes. <br>
                     A megadott időtartam {{ duration }} nap. Ez azt jelenti, hogy a szállást legkésőbb {{ leaveDate |
-                    date }} 10 óráig el kell hagyni.</p>
+                    date }} 10 óráig el kell hagyni.
+                  </p>
+                </div>
             </div>
-            <p class="mt-3 float-right fs-4 finPrice"><strong>Összeg:</strong> <strong class="text-info font-weight-bold"> {{ calculateTotalPrice() | currency }}</strong></p>
-
+            <div class="modal-body-summary">
+              <p class="fs-5 finPrice"><strong>Összeg:</strong> <strong class="text-info font-weight-bold">{{ calculateTotalPrice() | currency }}</strong></p>
+            </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Mégse</button>
                 <button type="button" class="btn btn-primary submit" (click)="confirmBooking()">Foglalás megerősítése</button>
