@@ -146,7 +146,7 @@
               <input class="form-control" type="file" id="formFile" accept="image/*" (change)="onFileSelected($event)">
             </div>
 
-            <button type="button" class="btn  w-100" (click)="addAccommodation()" [disabled]="loadingModify">
+            <button type="button" class="btn get w-100" (click)="addAccommodation()" [disabled]="loadingModify">
               <span *ngIf="loadingModify">
                 <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
                 Mentés...
@@ -156,7 +156,7 @@
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn" data-bs-dismiss="modal">Mégsem</button>
+          <button type="button" class="btn get" data-bs-dismiss="modal">Mégsem</button>
         </div>
       </div>
     </div>
