@@ -161,10 +161,14 @@ export class BookingComponent implements OnInit, AfterViewInit {
 
   openBookingSummaryModal() {
   this.buildBookingData();
+    if (this.name == '' || this.phone == '' || this.dateOfStart == null || this.duration == null) {
+      this.messageService.show('warning', 'Kérjük, töltse ki az összes kötelező mezőt.', 'error');
+      return;
+    }
     if (this.modal && typeof this.modal.show === 'function') {
       this.modal.show();
     } else {
-      console.warn('Booking modal not available to show');
+      this.messageService.show('warning', 'Foglalási összegzés nem elérhető', 'error');
     }
   }
 

@@ -5,7 +5,8 @@
     <form>
         <div class="mb-3">
             <label for="exampleInputAccommodation1" class="form-label">Szállás</label>
-            <select class="form-control" id="exampleInputAccommodation1" name="accommodation" [(ngModel)]="selectedAccommodationId" (ngModelChange)="onAccommodationChange($event)">
+            <select class="form-control" id="exampleInputAccommodation1" name="accommodation"
+                [(ngModel)]="selectedAccommodationId" (ngModelChange)="onAccommodationChange($event)">
                 <option *ngFor="let accommodation of accommodations" [ngValue]="accommodation.id">
                     {{ accommodation.name }}
                 </option>
@@ -21,16 +22,19 @@
         </div>
         <div class="mb-3">
             <label for="exampleInputStartDate1" class="form-label">Kezdő dátum</label>
-            <input type="date" class="form-control" id="exampleInputStartDate1" name="dateOfStart" [(ngModel)]="dateOfStart" required [min]="minStartDate">
+            <input type="date" class="form-control" id="exampleInputStartDate1" name="dateOfStart"
+                [(ngModel)]="dateOfStart" required [min]="minStartDate">
         </div>
         <div class="mb-3">
             <label for="exampleInputDuration1" class="form-label">Időtartam</label>
-            <input type="number" class="form-control" id="exampleInputDuration1" name="duration" [(ngModel)]="duration" min="1" max="31" required>
+            <input type="number" class="form-control" id="exampleInputDuration1" name="duration" [(ngModel)]="duration"
+                min="1" max="31" required>
         </div>
         <div class="mb-3 form-check">
             <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
             <label class="form-check-label" for="exampleCheck1">A foglalás véglegesítésével tudomásul veszem, hogy az
-                igénybe vett szolgáltatást <strong>a kezdő dátum előtt 24 órával lemondhatom</strong>. Azt követően a visszatérítés nem
+                igénybe vett szolgáltatást <strong>a kezdő dátum előtt 24 órával lemondhatom</strong>. Azt követően a
+                visszatérítés nem
                 teljes.</label>
         </div>
         <button type="submit" class="btn btn-primary" (click)="openBookingSummaryModal()">Lefoglalom!</button>
@@ -39,7 +43,8 @@
 </div>
 
 <!-- Booking Summary Modal -->
-<div class="modal fade" id="bookingSummaryModal" #bookingSummaryModal tabindex="-1" aria-labelledby="bookingSummaryModalLabel" aria-hidden="true">
+<div class="modal fade" id="bookingSummaryModal" #bookingSummaryModal tabindex="-1"
+    aria-labelledby="bookingSummaryModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -51,11 +56,15 @@
                 <p><strong>Telefonszám:</strong> {{ bookingData.phone }}</p>
                 <p><strong>Kezdő dátum:</strong> {{ bookingData.startDate | date }}</p>
                 <p><strong>Időtartam:</strong> {{ duration }} nap</p>
-                <p><strong>Összeg:</strong> {{ calculateTotalPrice() | currency }}</p>
 
-                <p><strong class="text-danger">Fontos</strong>: A foglalás véglegesítésével tudomásul veszem, hogy az igénybe vett szolgáltatást <strong>a kezdő dátum előtt 24 órával lemondhatom</strong>. Azt követően a visszatérítés nem teljes. <br>
-                A megadott időtartam {{ duration }} nap. Ez azt jelenti, hogy a szállást legkésőbb {{ leaveDate | date }} 10 óráig el kell hagyni.</p>
+                <p><strong class="text-danger">Fontos</strong>: A foglalás véglegesítésével tudomásul veszem, hogy az
+                    igénybe vett szolgáltatást <strong>a kezdő dátum előtt 24 órával lemondhatom</strong>. Azt követően
+                    a visszatérítés nem teljes. <br>
+                    A megadott időtartam {{ duration }} nap. Ez azt jelenti, hogy a szállást legkésőbb {{ leaveDate |
+                    date }} 10 óráig el kell hagyni.</p>
             </div>
+            <p class="mt-3 float-right fs-4"><strong>Összeg:</strong> <strong class="text-danger font-weight-bold"> {{ calculateTotalPrice() | currency }}</strong></p>
+
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Mégse</button>
                 <button type="button" class="btn btn-primary" (click)="confirmBooking()">Foglalás megerősítése</button>
