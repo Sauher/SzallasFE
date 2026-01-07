@@ -15,8 +15,7 @@
                 <p><small>Továbbiak megtekintéséhez kattints a kezelés gombra</small></p>
             </div>
 
-
-            <a class="btn" data-bs-toggle="modal" data-bs-target="#AccommodationModal">Kezelés</a>
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#AccommodationModal">Kezelés</button>
         </div>
     </div>
 
@@ -33,7 +32,7 @@
                 </a>
                 <p><small>Továbbiak megtekintéséhez kattints a kezelés gombra</small></p>
             </div>
-            <a class="btn" data-bs-toggle="modal" data-bs-target="#UserModal">Kezelés</a>
+            <button class="btn btn-primary w-100 mt-auto" data-bs-toggle="modal" data-bs-target="#UserModal">Kezelés</button>
         </div>
     </div>
 
@@ -133,7 +132,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form>
+          <form class="d-flex flex-column">
             <div class="mb-3">
               <label for="accommodationName" class="form-label">Név</label>
               <input type="text" class="form-control" id="accommodationName" placeholder="Név" [(ngModel)]="selectedAccommodation.name" name="name">
@@ -155,7 +154,7 @@
               <textarea class="form-control" id="accommodationDescription" placeholder="Leírás" [(ngModel)]="selectedAccommodation.description" name="description"></textarea>
             </div>
 
-            <button type="button" class="btn  w-100" (click)="saveAccommodationChanges()" [disabled]="loadingModify">
+            <button type="button" class="btn btn-primary w-100 mt-3" (click)="saveAccommodationChanges()" [disabled]="loadingModify">
               <span *ngIf="loadingModify">
                 <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
                 Mentés...
@@ -181,7 +180,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form>
+          <form class="d-flex flex-column">
             <div class="mb-3">
               <label for="userName" class="form-label">Név</label>
               <input type="text" class="form-control" id="userName" placeholder="Név" [(ngModel)]="selectedUser.name" name="name">
@@ -198,7 +197,7 @@
                 <option value="owner">Tulajdonos</option>
               </select>
             </div>
-            <button type="button" class="btn w-100" (click)="saveUserChanges()" [disabled]="loadingModify">
+            <button type="button" class="btn btn-primary w-100 mt-3" (click)="saveUserChanges()" [disabled]="loadingModify">
               <span *ngIf="loadingModify">
                 <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
                 Mentés...

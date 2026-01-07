@@ -2,37 +2,36 @@
   <h2 class="text-center mb-4">Profil szerkesztése</h2>
   
   <div class="row">
-    <!-- Left Column: Profile Update -->
     <div class="col-lg-6 col-sm-12 mb-4">
-      <div class="profileDiv p-4">
+      <div class="profileDiv p-4 d-flex flex-column">
         <h4 class="text-center mb-3">Személyes adatok</h4>
         <hr>
-        <form>
-          <!-- Name field -->
+        <form class="d-flex flex-column flex-grow-1">
+
           <div class="mb-3">
             <label for="profileName" class="form-label">Név</label>
             <input type="text" class="form-control" id="profileName" placeholder="Név" name="name" [(ngModel)]="user.name">
           </div>
 
-          <!-- Email field -->
+
           <div class="mb-3">
             <label for="profileEmail" class="form-label">Email</label>
             <input type="email" class="form-control" id="profileEmail" placeholder="Email" name="email" [(ngModel)]="user.email">
           </div>
 
-          <!-- Phone field -->
+
           <div class="mb-3">
             <label for="profilePhone" class="form-label">Telefon</label>
             <input type="tel" class="form-control" id="profilePhone" placeholder="Telefonszám" name="phone" [(ngModel)]="user.phone">
           </div>
 
-          <!-- Address field -->
+
           <div class="mb-3">
             <label for="profileAddress" class="form-label">Cím</label>
             <input type="text" class="form-control" id="profileAddress" placeholder="Cím" name="address" [(ngModel)]="user.address">
           </div>
 
-          <button type="button" class="btn btn-primary w-100" (click)="updateProfile()" [disabled]="loadingProfile">
+          <button type="button" class="btn btn-primary w-100 mt-auto" (click)="updateProfile()" [disabled]="loadingProfile">
             <span *ngIf="loadingProfile">
               <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
               Frissítés...
@@ -43,25 +42,25 @@
       </div>
     </div>
 
-    <!-- Right Column: Password Update -->
+
     <div class="col-lg-6 col-sm-12 mb-4">
-      <div class="profileDiv p-4">
+      <div class="profileDiv p-4 d-flex flex-column">
         <h4 class="text-center mb-3">Jelszó módosítása</h4>
         <hr>
-        <form>
-          <!-- Old Password field -->
+        <form class="d-flex flex-column flex-grow-1">
+
           <div class="mb-3">
             <label for="oldPassword" class="form-label">Jelenlegi jelszó</label>
             <input type="password" class="form-control" id="oldPassword" placeholder="Jelenlegi jelszó" name="oldPassword" [(ngModel)]="oldPassword">
           </div>
 
-          <!-- New Password field -->
+
           <div class="mb-3">
             <label for="newPassword" class="form-label">Új jelszó</label>
             <input type="password" class="form-control" id="newPassword" placeholder="Új jelszó" name="newPassword" [(ngModel)]="newPassword">
           </div>
 
-          <!-- Confirm Password field -->
+
           <div class="mb-3">
             <label for="confirmPassword" class="form-label">Jelszó megerősítése</label>
             <input type="password" class="form-control" id="confirmPassword" placeholder="Jelszó megerősítése" name="confirmPassword" [(ngModel)]="confirmPassword"
@@ -71,7 +70,7 @@
             </div>
           </div>
 
-          <button type="button" class="btn btn-primary w-100" (click)="updatePassword()" [disabled]="loadingPassword">
+          <button type="button" class="btn btn-primary w-100 mt-auto" (click)="updatePassword()" [disabled]="loadingPassword">
             <span *ngIf="loadingPassword">
               <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
               Frissítés...

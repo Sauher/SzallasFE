@@ -1,35 +1,46 @@
-<div class="loginDiv p3 col-lg-3 col-sm-5 col-6 mb-3 mx-auto">
-    <h2 class="text-center">Kapcsolat</h2>
-    <hr>
-    <div class="infos">
-        <p class="text-center fs-5">Ha kérdése van, lépjen kapcsolatba velünk az alábbi űrlap kitöltésével.</p>
-    </div>
-    <form>
-        <!--contact via email-->
-        <div class="mb-3">
-            <input type="text" class="form-control" id="contactName" aria-describedby="name" placeholder="Teljes név"
-                name="fullname" [(ngModel)]="contact.name">
-        </div>
-
-        <div class="mb-3">
-            <input type="email" class="form-control" id="contactEmail" aria-describedby="emailHelp" placeholder="Email"
-                name="email" [(ngModel)]="contact.email">
-        </div>
+<div class="contactContainer mb-3 mx-auto">
+  <h2 class="text-center mb-4">Kapcsolat</h2>
+  
+  <div class="row">
+    <div class="col-lg-6 col-md-8 col-sm-10 mx-auto">
+      <div class="contactDiv p-4 d-flex flex-column">
+        <h4 class="text-center mb-3">Kapcsolatfelvétel</h4>
         <hr>
-        <div class="mb-3">
-            <select class="form-select" aria-label="Default select example" aria-placeholder="Tárgy" [(ngModel)]="contact.subject" name="subject">
-                <option selected disabled>Tárgy</option>
-                <option value="{{error}}" *ngFor="let error of errors index as i">
-                    {{error}}
-                </option>
+        <div class="infos mb-3">
+          <p class="text-center fs-6">Ha kérdése van, lépjen kapcsolatba velünk az alábbi űrlap kitöltésével.</p>
+        </div>
+        
+        <form class="d-flex flex-column flex-grow-1">
+          <!-- Name field -->
+          <div class="mb-3">
+            <label for="contactName" class="form-label">Teljes név</label>
+            <input type="text" class="form-control" id="contactName" placeholder="Teljes név" name="fullname" [(ngModel)]="contact.name">
+          </div>
 
+          <!-- Email field -->
+          <div class="mb-3">
+            <label for="contactEmail" class="form-label">Email</label>
+            <input type="email" class="form-control" id="contactEmail" placeholder="Email" name="email" [(ngModel)]="contact.email">
+          </div>
 
+          <!-- Subject select -->
+          <div class="mb-3">
+            <label for="contactSubject" class="form-label">Tárgy</label>
+            <select class="form-select" id="contactSubject" [(ngModel)]="contact.subject" name="subject">
+              <option selected disabled>Válasszon témát</option>
+              <option value="{{error}}" *ngFor="let error of errors">{{error}}</option>
             </select>
-        </div>
-        <div class="mb-3">
-            <textarea class="form-control" id="contactMessage" rows="3" placeholder="Üzenet (max. 800 karakter)"
-                name="message" [(ngModel)]="contact.message"></textarea>
-        </div>
-        <button class="btn btn-primary" (click)="sendContact()">Küldés</button>
-    </form>
+          </div>
+
+          <!-- Message textarea -->
+          <div class="mb-3">
+            <label for="contactMessage" class="form-label">Üzenet (max. 800 karakter)</label>
+            <textarea class="form-control" id="contactMessage" placeholder="Az Ön üzenete..." name="message" [(ngModel)]="contact.message"></textarea>
+          </div>
+
+          <button type="button" class="btn btn-primary w-100" (click)="sendContact()">Küldés</button>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>

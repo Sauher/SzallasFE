@@ -1,44 +1,106 @@
-.registrationDiv{
+.registrationContainer {
+  padding: 20px;
+  max-width: 1200px;
+}
 
-    margin-top: 50px;
-    color: var(--main-bg-color);
+.registrationDiv {
+  margin-top: 20px;
+  color: var(--main-font-color);
+  min-height: 600px;
+  text-shadow: 0 0 5px var(--main-bg-color);
+  border-radius: 8px;
+  background: linear-gradient(90deg, var(--main-bg-color), var(--secondary-color));
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
 
+.registrationDiv form {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 input[type="email"], input[type="password"], input[type="text"], input[type="tel"] {
-
-    background-color: var(--input-color);
-    box-shadow: none;
-    box-shadow: 0px 0px 3px var(--main-bg-color);
+  background-color: var(--input-color);
+  box-shadow: none;
+  box-shadow: 0px 0px 3px var(--main-bg-color);
+  color: var(--main-bg-color);
 }
 
+input[type="email"]::placeholder,
+input[type="password"]::placeholder,
+input[type="tel"]::placeholder,
+input[type="text"]::placeholder {
+  color: var(--main-bg-color);
+  opacity: 0.7;
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="tel"]:focus,
+input[type="text"]:focus {
+  background-color: var(--input-color);
+  color: var(--main-bg-color);
+  box-shadow: 0px 0px 5px var(--main-bg-color);
+  border-color: var(--secondary-light-color);
+}
+
+.form-label {
+  color: var(--main-font-color);
+  text-shadow: 0 0 2px var(--main-font-color);
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.form-check-label {
+  color: var(--main-font-color);
+    text-shadow: 0 0 2px var(--main-font-color);
+  margin-left: 0.5rem;
+}
 
 button.btn-primary {
-
-    background-color: var(--secondary-light-color);
-    border: none;
-
-
+  background-color: var(--input-color);
+  border: none;
+  color: var(--main-font-color);
+  text-shadow: 0 0 2px var(--main-font-color);
+  transition: 500ms;
 }
 
-button:hover{
-    background-color: var(--secondary-color);
-    
+button.btn-primary:hover:not(:disabled) {
+  background-color: var(--secondary-light-color);
+  transform: scale(1.05);
 }
 
-
-input[type="checkbox"]{
-
-    width: 15px;
-    height: 15px;
-
-    background-color: var(--main-bg-color);
-
-
-    
+button.btn-primary:disabled {
+  background-color: var(--input-color);
+  opacity: 0.7;
+  cursor: not-allowed;
 }
 
-input[type="checkbox"]:focus{
-    outline: none !important;
-    box-shadow: none !important;
+input[type="checkbox"] {
+  width: 15px;
+  height: 15px;
+  background-color: var(--main-bg-color);
+}
+
+input[type="checkbox"]:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.optionalSection {
+  color: var(--main-font-color);
+  font-size: 0.95rem;
+}
+
+hr {
+  border-color: var(--main-font-color);
+  opacity: 0.2;
+}
+
+h4 {
+  color: var(--main-font-color);
+  text-shadow: 0 0 2px var(--main-font-color);
+  font-weight: 600;
 }

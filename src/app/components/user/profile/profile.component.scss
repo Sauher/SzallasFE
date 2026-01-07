@@ -1,16 +1,23 @@
 .profileContainer {
-  margin-top: 50px;
   padding: 20px;
   max-width: 1200px;
 }
-
 .profileDiv {
   margin-top: 20px;
   color: white;
+  min-height: 500px;
   text-shadow: 0 0 5px var(--main-bg-color);
   border-radius: 8px;
-  background: linear-gradient(var(--secondary-color),var(--secondary-light-color));
+  background: linear-gradient(90deg, var(--main-bg-color), var(--secondary-color));
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.profileDiv form {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 input[type="email"], input[type="password"], input[type="text"], input[type="tel"] {
@@ -41,22 +48,26 @@ input[type="text"]:focus {
 .form-label {
   color: var(--main-font-color);
   font-weight: 500;
+  text-shadow: 0 0 2px var(--main-font-color);
   margin-bottom: 0.5rem;
 }
 
 button.btn-primary {
-  background-color: var(--secondary-light-color);
+  background-color: var(--input-color);
+  text-shadow: 0 0 2px var(--main-font-color);
   border: none;
   width: 100%;
   margin-top: 10px;
+  transition: 500ms;
 }
 
 button.btn-primary:hover:not(:disabled) {
-  background-color: var(--secondary-color);
+  background-color: var(--secondary-light-color);
+  transform: scale(1.02);
 }
 
 button.btn-primary:disabled {
-  background-color: var(--secondary-light-color);
+  background-color: var(--input-color);
   opacity: 0.7;
   cursor: not-allowed;
 }
@@ -77,13 +88,13 @@ h2 {
 }
 
 h4 {
-  color: var(--main-bg-color);
-  font-size: 1.1rem;
+  color: var(--main-font-color);
+  text-shadow: 0 0 2px var(--main-font-color);
   font-weight: 600;
 }
 
 hr {
-  border-color: var(--main-bg-color);
+  border-color: var(--main-font-color);
   opacity: 0.2;
 }
 

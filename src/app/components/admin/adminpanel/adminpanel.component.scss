@@ -1,23 +1,31 @@
 .cardDiv{
-    background: linear-gradient(var(--secondary-color),var(--main-bg-color));
+   background: linear-gradient(90deg, var(--main-bg-color), var(--secondary-color));
     color: var(--main-font-color);
 }
-.btn{
-    background-color: var(--input-color);
-    color: white;
-    text-shadow: 0 0 5px var(--main-bg-color);
-    transition: 500ms;
-
+button.btn-primary {
+  background-color: var(--input-color);
+  text-shadow: 0 0 2px var(--main-font-color);
+  border: none;
+  width: 100%;
+  margin-top: 10px;
+  transition: 500ms;
 }
+
+button.btn-primary:hover:not(:disabled) {
+  background-color: var(--secondary-light-color);
+  transform: scale(1.02);
+}
+
+button.btn-primary:disabled {
+  background-color: var(--input-color);
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
 .btn-close{
     filter: invert(1);
 }
 
-.btn:hover{
-    background-color: var(--secondary-light-color);
-    text-shadow: 0 0 5px var(--main-font-color);
-    transform: scale(1.02);
-}   
 
 .admin-cards-row{
     display: flex;
@@ -40,14 +48,14 @@
 }
 .admin-card{
     color: white;
-    text-shadow: 0 0 5px var(--main-bg-color);
+    text-shadow: 0 0 2px var(--main-font-color);
     z-index: 0;
     flex: 0 1 300px; 
     max-width: 350px;
 }
 .card-title{
     color: white;
-    text-shadow: 0 0 5px var(--main-bg-color);
+    text-shadow: 0 0 2px var(--main-font-color);
     font-weight: bolder;
 }
 .list-group-item{
