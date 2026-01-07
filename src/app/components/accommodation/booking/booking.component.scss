@@ -19,6 +19,26 @@ button:hover{
     
 }
 
+.submit{
+
+    background-color: var(--secondary-color) !important;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 0 4px var(--main-bg-color);
+    transition: all 0.3s ease;
+    padding: 8px 16px;
+    --bs-btn-border-width: none !important;
+}
+
+.submit:hover{
+    background-color: var(--secondary-light-color) !important;
+    
+}
+
+.submit:focus{
+    outline: none !important;
+    box-shadow: none !important;
+}
 
 input[type="checkbox"]{
 
@@ -34,4 +54,84 @@ input[type="checkbox"]{
 input[type="checkbox"]:focus{
     outline: none !important;
     box-shadow: none !important;
+}
+
+
+
+
+
+//modal
+
+#bookingSummaryModal{
+    background-color: var(--main-bg-color);
+    color: var(--main-font-color);
+    border: none;
+    
+}
+
+.modal-content{
+    background: linear-gradient(var(--secondary-color), var(--secondary-light-color));
+    color: var(--main-font-color);
+    text-shadow: 0 0 5px var(--main-bg-color);
+    border-radius: 15px;
+    width: 800px;
+    margin: 0 auto;
+}
+
+.get{
+    background-color: var(--secondary-color);
+    color: var(--main-font-color);
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 0 4px var(--main-bg-color);
+    transition: all 0.3s ease;
+    padding: 8px 16px;
+    --bs-btn-border-width: none !important;
+}
+
+.get:focus{
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.modal-dialog {
+    max-width: 800px;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+.closeModal
+{
+    color: var(--main-font-color);
+    border: none;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    padding: 4px 8px;
+}
+
+.finPrice{
+    color: var(--main-font-color);
+    border: none;
+    border-radius: 5px;
+    animation: fadeIn 0.5s ease-in-out;
+    padding: 4px 8px;
+    text-align: end;
+
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.imp{
+    background-color: var(--secondary-color);
+    border: 1px solid var(--main-bg-color);
+    border-radius: 5px;
+    padding: 12px;
+    text-align: justify;
 }

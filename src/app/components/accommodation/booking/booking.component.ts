@@ -43,6 +43,7 @@ export class BookingComponent implements OnInit, AfterViewInit {
   dateOfStart: Date = new Date();
   duration: number = 1;
   bookedAccommodation: Accommodation | null = null;
+  accept: boolean = false;
 
 
   leaveDate: Date = new Date();
@@ -165,10 +166,14 @@ export class BookingComponent implements OnInit, AfterViewInit {
       this.messageService.show('warning', 'Kérjük, töltse ki az összes kötelező mezőt.', 'error');
       return;
     }
+    else if (!this.accept) {
+      this.messageService.show('warning', 'Kérjük, fogadja el a feltételeket.', 'error');
+      return;
+    }
     if (this.modal && typeof this.modal.show === 'function') {
       this.modal.show();
     } else {
-      this.messageService.show('warning', 'Foglalási összegzés nem elérhető', 'error');
+      this.messageService.show('danger', 'Foglalási összegzés nem elérhető', 'error');
     }
   }
 
