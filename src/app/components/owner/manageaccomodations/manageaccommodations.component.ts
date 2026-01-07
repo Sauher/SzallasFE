@@ -43,6 +43,20 @@ export class ManageaccommodationsComponent {
     password: '',
     role: ''
   };
+
+  newAccommodation: Accommodation = {
+    id: 0,
+    owner_Id: this.loggedUser.id,
+    name: '',
+    description: '',
+    address: '',
+    capacity: 0,
+    basePrice: 0,
+    active: false,
+    createdAt: new Date(),
+    imageUrl: ''
+  };
+
   loadingModify = false;
 
   ngOnInit(): void {
@@ -52,7 +66,7 @@ export class ManageaccommodationsComponent {
     this.getAccommodations();
 
   }
-
+  selectedFile: File | null = null;
   selectedAccommodation: Accommodation = {
     id: 0,
     name: '',
@@ -87,6 +101,18 @@ export class ManageaccommodationsComponent {
     this.ModifyModal.show();
     
   }
+  deleteAccommodation(accommodation: Accommodation) {
+    if (confirm('Biztosan törölni szeretnéd ezt a szállást?')) {
+    this.apiService.Delete('accommodations', accommodation.id).then(res => {
+      this.messageService.show('success', 'Siker', 'Szállás sikeresen törölve');
+      this.moreInfo.hide();
+      this.getAccommodations();
+    }).catch(error => {
+      this.messageService.show('danger', 'Hiba', 'Hiba történt a törléskor');
+    });
+  }
+  
+  }
   saveAccommodationChanges() {
     this.UpdatedAccomodation = { id: this.selectedAccommodation.id, name: this.selectedAccommodation.name, description: this.selectedAccommodation.description, address: this.selectedAccommodation.address, capacity: this.selectedAccommodation.capacity, basePrice: this.selectedAccommodation.basePrice, active: this.selectedAccommodation.active, createdAt: this.selectedAccommodation.createdAt };
     this.loadingModify = true;
@@ -101,5 +127,61 @@ export class ManageaccommodationsComponent {
       this.ModifyModal.hide();
     });
   }
+  async addAccommodation() {
+    this.loadingModify = true;
+    try {
+      // Upload image if selected
+      if(this.selectedFile){
+        const formData = new FormData();
+        formData.append('image', this.selectedFile);
+        const uploadRes = await this.apiService.Upload(formData);
+        if(uploadRes.status != 200){
+          this.messageService.show('danger','Hiba', uploadRes.message || 'Hiba a kép feltöltésénél');
+          this.loadingModify = false;
+          return;
+        }
+        this.newAccommodation.imageUrl = uploadRes.data.filename;
+      }
+
+      // Set owner_Id
+      this.newAccommodation.owner_Id = this.loggedUser.id;
+
+      // Insert accommodation
+      const res = await this.apiService.Insert('accommodations', this.newAccommodation);
+      if (res.status == 500) {
+        this.messageService.show('danger', 'Hiba', 'Hiba történt az új szállás hozzáadásakor');
+        this.loadingModify = false;
+        return;
+      }
+      this.messageService.show('success', 'Siker', 'Új szállás sikeresen hozzáadva');
+      
+      // Reset form
+      this.newAccommodation = {
+        id: 0,
+        owner_Id: this.loggedUser.id,
+        name: '',
+        description: '',
+        address: '',
+        capacity: 0,
+        basePrice: 0,
+        active: false,
+        createdAt: new Date(),
+        imageUrl: ''
+      };
+      this.selectedFile = null;
+      
+      // Close modal and refresh
+      const modal = bootstrap.Modal.getInstance('#addAccommodationModal');
+      if(modal) modal.hide();
+      this.getAccommodations();
+      this.loadingModify = false;
+    } catch(error) {
+      this.messageService.show('danger', 'Hiba', 'Ismeretlen hiba történt');
+      this.loadingModify = false;
+    }
   }
-  
+  onFileSelected(event:any){
+    this.selectedFile = event.target.files[0];
+    
+  }
+}

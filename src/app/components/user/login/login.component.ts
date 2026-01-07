@@ -44,12 +44,13 @@ export class LoginComponent {
         this.message.show('danger', 'Hiba', res.message);
         return
       }
+
       if (this.rememberMe) {
         this.auth.storeUser(JSON.stringify(res.data))
       }
 
       this.auth.login(JSON.stringify(res.data));
-      this.router.navigate(['/szallasok']);
+      this.router.navigate(['/accommodations']);
       this.message.show('success', 'Siker', res.message);
     })
   }

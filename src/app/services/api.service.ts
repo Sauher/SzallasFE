@@ -78,7 +78,11 @@ export class APIService {
 
   async Upload(formData: FormData): Promise<ApiResponse>{
     try{
-      const response = await axios.post(`${this.SERVER}/upload`, formData);
+      const response = await axios.post(`${this.SERVER}/upload`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      });
       return {
         status: 200,
         data: response.data

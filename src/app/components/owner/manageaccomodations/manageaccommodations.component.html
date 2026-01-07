@@ -1,6 +1,15 @@
 <div class="mainAccDiv mx-auto">
 
     <ul class="accommodationList d-flex flex-wrap justify-content-center mb-3 mx-auto">
+      <li>
+          <div class="cardDiv mx-auto">
+            <p class="mt-4">Új szállás hozzáadása</p>
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addAccommodationModal">
+              <i class="bi bi-plus"></i>
+            </button>
+ 
+          </div>   
+      </li>
         <li *ngFor="let accommodation of accommodations">
             <div class="cardDiv mx-auto">
                 <img [src]="accommodation.imageUrl" alt="">
@@ -47,6 +56,7 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger-emphasis closeModal" data-bs-dismiss="modal"><i class="bi bi-x"></i> Bezárás</button>
                 <button type="button" class="btn btn-primary get" (click)="modifyAccommodation(selectedAccommodation)"><i class="bi bi-pencil"></i> Módosítás</button>
+                <button type="button" class="btn btn-danger get" (click)="deleteAccommodation(selectedAccommodation)"><i class="bi bi-trash"></i> Törlés</button>
             </div>
         </div>
     </div>
@@ -89,6 +99,57 @@
                 Mentés...
               </span>
               <span *ngIf="!loadingModify">Változások mentése</span>
+            </button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn" data-bs-dismiss="modal">Mégsem</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+   <div class="modal fade" id="addAccommodationModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addAccommodationModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-4" id="addAccommodationModalLabel">Szállás hozzáadása</h1>
+
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="accommodationName" class="form-label">Név</label>
+              <input type="text" class="form-control" id="accommodationName" placeholder="Név" [(ngModel)]="newAccommodation.name" name="name">
+            </div>
+            <div class="mb-3">
+              <label for="accommodationAddress" class="form-label">Cím</label>
+              <input type="text" class="form-control" id="accommodationAddress" placeholder="Cím" [(ngModel)]="newAccommodation.address" name="address">
+            </div>
+            <div class="mb-3">
+              <label for="accommodationPrice" class="form-label">Ár (€)</label>
+              <input type="number" class="form-control" id="accommodationPrice" placeholder="Ár" [(ngModel)]="newAccommodation.basePrice" name="price">
+            </div>
+            <div class="mb-3">
+              <label for="accommodationCapacity" class="form-label">Férőhelyek</label>
+              <input type="number" class="form-control" id="accommodationCapacity" placeholder="Férőhelyek" [(ngModel)]="newAccommodation.capacity" name="capacity">
+            </div>
+            <div class="mb-3">
+              <label for="accommodationDescription" class="form-label">Leírás</label>
+              <textarea class="form-control" id="accommodationDescription" placeholder="Leírás" [(ngModel)]="newAccommodation.description" name="description"></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="formFile" class="form-label">Példa kép</label>
+              <input class="form-control" type="file" id="formFile" accept="image/*" (change)="onFileSelected($event)">
+            </div>
+
+            <button type="button" class="btn  w-100" (click)="addAccommodation()" [disabled]="loadingModify">
+              <span *ngIf="loadingModify">
+                <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                Mentés...
+              </span>
+              <span *ngIf="!loadingModify">Hozzáadás</span>
             </button>
           </form>
         </div>

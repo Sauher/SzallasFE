@@ -1,5 +1,6 @@
 .footDiv{
     color: var(--main-font-color);
+    text-shadow: 0 0 1px var(--main-font-color);
     padding: 10px 0;
     width: 100%;
     background: linear-gradient(90deg, var(--main-bg-color), var(--secondary-color));

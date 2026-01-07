@@ -19,32 +19,16 @@ nav {
 /* ===== CAPSULE MENÜ RÉSZ ===== */
 
 .navbar-nav {
-    
     margin: 0 auto;
-
     padding: 10px 45px;
- 
     background: linear-gradient(90deg, var(--main-bg-color), var(--secondary-color));
     margin-bottom: 10px;
     border: 1px solid var(--capsule-border);
-
     backdrop-filter: blur(50px);
- 
     border-radius: 20px;
-
     max-width: 900px;
- 
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.18);
-
-    
-
-
-
 }
-
-
-
-
 
 /* Toggler container styling */
 .navbar-toggler {
@@ -90,6 +74,8 @@ nav {
 .nav-link {
 
     color: var(--main-font-color) !important;
+
+    text-shadow: 0 0 2px var(--main-font-color);
 
     font-size: 1.05rem;
 
