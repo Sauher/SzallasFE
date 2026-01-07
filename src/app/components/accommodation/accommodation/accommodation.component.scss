@@ -29,6 +29,7 @@
     width: 250px;
     height: 370px;
     min-height: fit-content;
+    max-height: 370px;
 
 }
 
@@ -39,6 +40,38 @@
     width: 250px;
     border-radius: 10px 10px 0 0;
 
+
+}
+
+.imageWrap{
+    position: relative;
+    width: 250px;
+    height: 150px;
+    overflow: hidden;
+    border-radius: 10px 10px 0 0;
+}
+
+.imageWrap img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.imgTitle{
+    position: absolute;
+    left: 10px;
+    bottom: 8px;
+    margin: 0;
+    padding: 4px 8px;
+    background: var(--secondary-color);
+    color: white;
+    font-size: 16px;
+    border-radius: 6px;
+    max-width: calc(100% - 20px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .properties{
@@ -229,3 +262,10 @@ input[type="text"]{
         width: 80% !important;
     }
 }
+
+
+h3{
+    font-size: 20px;
+}
+
+

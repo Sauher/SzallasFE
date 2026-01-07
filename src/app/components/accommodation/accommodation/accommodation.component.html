@@ -16,7 +16,10 @@
     <ul class="accommodationList d-flex flex-wrap justify-content-center mb-3 mx-auto">
         <li *ngFor="let accommodation of accommodations">
             <div class="cardDiv mx-auto">
-                <img [src]="accommodation.imageUrl" alt="">
+                <div class="imageWrap">
+                    <img [src]="accommodation.imageUrl" alt="">
+                    <h3 class="imgTitle">{{ accommodation.name }}</h3>
+                </div>
                 <div class="properties">
                     <p class="capacity"><span style="font-style: normal;">Ferőhely:</span> {{accommodation.capacity}} fő
                     </p>
