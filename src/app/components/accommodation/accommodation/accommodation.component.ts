@@ -52,8 +52,10 @@ export class AccommodationComponent implements OnInit {
       this.allAccommodations = res.data || [];
       this.accommodations = [...this.allAccommodations];
 
-      this.allAccommodations.forEach(accommodation => {
-        accommodation.imageUrl = `dump_acc_img.png`;
+      this.accommodations.forEach(accommodation => {
+        if (accommodation.imageUrl) {
+          accommodation.imageUrl = `http://localhost:3000/uploads/${accommodation.imageUrl}`;
+        }
       });
     }).catch(error => {
       this.messageService.show('warning', 'Error fetching accommodations: ' + error.message, 'error');

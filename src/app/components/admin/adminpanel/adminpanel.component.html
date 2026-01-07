@@ -54,6 +54,7 @@
                   <th>Email</th>
                   <th>Telefonszám</th>
                   <th>Cím</th>
+                  <th>Állapot</th>
                   <th>Műveletek</th>
                 </tr>
               </thead>
@@ -63,6 +64,7 @@
                   <td>{{user.email}}</td>
                   <td>{{user.phone}}</td>
                   <td>{{user.address}}</td>
+                  <td>{{user.status == false ? 'Aktív' : 'Inaktív'}}</td>
                   <td>
                     <button class="btn btn-sm btn-warning me-2" (click)="modifyUser(user)">Módosítás</button>
                     <button class="btn btn-sm btn-danger" (click)="deleteUser(user.id)">Törlés</button>
@@ -195,6 +197,13 @@
                 <option value="admin">Admin</option>
                 <option value="user">Felhasználó</option>
                 <option value="owner">Tulajdonos</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="userStatus" class="form-label">Állapot</label>
+              <select class="form-select" id="userStatus" [(ngModel)]="selectedUser.status" name="status">
+                <option value="0">Aktív</option>
+                <option value="1">Inaktív</option>
               </select>
             </div>
             <button type="button" class="btn btn-primary w-100 mt-3" (click)="saveUserChanges()" [disabled]="loadingModify">
