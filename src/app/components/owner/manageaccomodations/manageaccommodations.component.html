@@ -3,16 +3,18 @@
     <ul class="accommodationList d-flex flex-wrap justify-content-center mb-3 mx-auto">
       <li>
           <div class="cardDiv mx-auto">
-            <p class="mt-4">Új szállás hozzáadása</p>
-            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addAccommodationModal">
+            <p class="mt-4 addCardTitle">Új szállás hozzáadása</p>
+            <button class="btn addbtn" data-bs-toggle="modal" data-bs-target="#addAccommodationModal">
               <i class="bi bi-plus"></i>
             </button>
- 
           </div>   
       </li>
         <li *ngFor="let accommodation of accommodations">
             <div class="cardDiv mx-auto">
-                <img [src]="accommodation.imageUrl" alt="accommodation-image">
+                <div class="imageWrap">
+                    <img [src]="accommodation.imageUrl" alt="accommodation-image">
+                    <h3 class="imgTitle">{{ accommodation.name }}</h3>
+                </div>
                 <div class="properties">
                     <p class="capacity"><span style="font-style: normal;">Ferőhely:</span> {{accommodation.capacity}} fő
                     </p>
@@ -93,7 +95,7 @@
               <textarea class="form-control" id="accommodationDescription" placeholder="Leírás" [(ngModel)]="selectedAccommodation.description" name="description"></textarea>
             </div>
 
-            <button type="button" class="btn  w-100" (click)="saveAccommodationChanges()" [disabled]="loadingModify">
+            <button type="button" class="btn get w-100" (click)="saveAccommodationChanges()" [disabled]="loadingModify">
               <span *ngIf="loadingModify">
                 <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
                 Mentés...
@@ -103,12 +105,12 @@
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn" data-bs-dismiss="modal">Mégsem</button>
+          <button type="button" class="btn get" data-bs-dismiss="modal">Mégsem</button>
         </div>
       </div>
     </div>
   </div>
-
+<!-- Add Accommodation Modal -->
    <div class="modal fade" id="addAccommodationModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addAccommodationModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
@@ -140,7 +142,7 @@
               <textarea class="form-control" id="accommodationDescription" placeholder="Leírás" [(ngModel)]="newAccommodation.description" name="description"></textarea>
             </div>
             <div class="mb-3">
-              <label for="formFile" class="form-label">Példa kép</label>
+              <label for="formFile" class="form-label">Kép a szállásról</label>
               <input class="form-control" type="file" id="formFile" accept="image/*" (change)="onFileSelected($event)">
             </div>
 

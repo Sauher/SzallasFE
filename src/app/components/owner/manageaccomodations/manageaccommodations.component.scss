@@ -1,29 +1,7 @@
-.modal-content{
-    background: linear-gradient(var(--secondary-color),var(--secondary-light-color));
-    color: var(--main-font-color);
-}
-.modal-content .btn{
-    background-color: var(--input-color);
-    color: white;
-    text-shadow: 0 0 5px var(--main-bg-color);
-    transition: 500ms;
-
-}
-.btn-close{
-    filter: invert(1);
-}
-
-.modal-content .btn:hover{
-    background-color: var(--main-bg-color);
-    text-shadow: 0 0 5px var(--main-font-color);
-    transform: scale(1.02);
-}   
-
 .more{
   cursor: pointer;
   background-color: var(--input-color);
-  color: white;
-  text-shadow: 0 0 5px var(--main-bg-color);
+  color: var(--main-font-color);
   text-decoration: underline;
   border: none;
   border-radius: 5px;
@@ -51,6 +29,7 @@
     width: 250px;
     height: 370px;
     min-height: fit-content;
+    max-height: 370px;
 
 }
 
@@ -61,6 +40,38 @@
     width: 250px;
     border-radius: 10px 10px 0 0;
 
+
+}
+
+.imageWrap{
+    position: relative;
+    width: 250px;
+    height: 150px;
+    overflow: hidden;
+    border-radius: 10px 10px 0 0;
+}
+
+.imageWrap img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.imgTitle{
+    position: absolute;
+    left: 10px;
+    bottom: 8px;
+    margin: 0;
+    padding: 4px 8px;
+    background: var(--secondary-color);
+    color: white;
+    font-size: 16px;
+    border-radius: 6px;
+    max-width: calc(100% - 20px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .properties{
@@ -120,26 +131,46 @@ ul{
 
 
 
-input[type="text"],input[type="number"]{
-    background-color: var(--input-color);
-    color: var(--main-bg-color);
+.filterBTN{
+    background-color: var(--main-bg-color);
+    color: var(--main-font-color);
     border: none;
     border-radius: 5px;
     box-shadow: 0 0 4px var(--main-bg-color);
     transition: all 0.3s ease;
     padding: 8px 16px;
-    width: 30% !important;
-    align-self: flex-start !important;
+    margin-left: 20px;
+    font-size: 16px;
+
 }
 textarea{
-    background-color: var(--input-color);
-    color: var(--main-bg-color);
-    border: none;
-    border-radius: 5px;
-    box-shadow: 0 0 4px var(--main-bg-color);
-    transition: all 0.3s ease;
-    padding: 8px 16px;
-    align-self: flex-start !important;
+  background-color: var(--input-color);
+  color: var(--main-bg-color);
+  box-shadow: 0px 0px 3px var(--main-bg-color);
+  border: 1px solid var(--secondary-light-color);
+}
+
+input[type="number"], input[type="text"] {
+  background-color: var(--input-color);
+  box-shadow: none;
+  box-shadow: 0px 0px 3px var(--main-bg-color);
+  color: var(--main-bg-color);
+}
+
+
+input[type="number"]::placeholder,
+input[type="text"]::placeholder {
+  color: var(--main-bg-color);
+  opacity: 0.7;
+}
+
+
+input[type="number"]:focus,
+input[type="text"]:focus {
+  background-color: var(--input-color);
+  color: var(--main-bg-color);
+  box-shadow: 0px 0px 5px var(--main-bg-color);
+  border-color: var(--secondary-light-color);
 }
 
 .modalContent {
@@ -159,57 +190,47 @@ textarea{
     object-fit: contain;
     border: var(--main-font-color) 2px solid;
 }
-.form-label{
-    color: white;
-    text-shadow: 0 0 5px var(--main-bg-color);
-}
+
 .right{
     margin-left: 20px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     min-width: 330px;
-    color: white;
-    text-shadow: 0 0 5px var(--main-bg-color);
+}
 
-}
-#ModifyModalLabel{
-    color: white;
-    text-shadow: 0 0 5px var(--main-bg-color);
-    font-weight: bolder;
-}
-#moreInfoLabel{
-    color: white;
-    text-shadow: 0 0 5px var(--main-bg-color);
-    font-weight: bolder;
-    font-size: larger;
-}
-#moreInfo{
-    color: var(--main-font-color);
-    border: none;
-    
-}
 #ModifyModal{
     background-color: var(--main-bg-color);
-    border: none;
 }
 
 .modal-content{
-    background-color: var(--secondary-light-color);
-    color: var(--main-bg-color);
+    background: linear-gradient(var(--secondary-color), var(--secondary-light-color));
+    color: var(--main-font-color);
+    text-shadow: 0 0 5px var(--main-bg-color);
     border-radius: 15px;
     width: 800px;
     margin: 0 auto;
 }
 
 .get{
-
+    background-color: var(--secondary-color);
+    color: var(--main-font-color);
     border: none;
     border-radius: 5px;
     box-shadow: 0 0 4px var(--main-bg-color);
     transition: all 0.3s ease;
+    padding: 8px 16px;
+    --bs-btn-border-width: none !important;
 }
-
+.addCardTitle{
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: var(--main-font-color);
+}
+.get:hover {
+    background-color: var(--secondary-light-color);
+    box-shadow: 0 0 8px var(--main-bg-color);
+}
 .get:focus{
     outline: none !important;
     box-shadow: none !important;
@@ -230,48 +251,61 @@ textarea{
     padding: 4px 8px;
 }
 
-.bi-plus{
-    font-size: 3rem;
+.addbtn{
+    background-color: var(--input-color);
+    color: var(--main-font-color);
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 0 4px var(--input-color);
+    transition: all 0.3s ease;
+    padding: 8px 16px;
+    --bs-btn-border-width: none !important;
 }
+.addbtn:hover {
+    background-color: var(--secondary-light-color);
+    box-shadow: 0 0 8px var(--secondary-light-color);
+}
+
+.bi-plus{
+    color: var(--main-font-color);
+    font-size: 8rem;
+}
+
 .modalPrice{
     font-size: 50px;
-    color: white;
-    text-shadow: 0 0 5px var(--main-bg-color);
-    font-weight: bolder;
+    font-weight: bold;
     margin: 0;
     color: var(--main-font-color);
     font-style: normal;
 
     position: relative;
     bottom: -10px;
-    right: -340px;
+    right: -220px;
 
-    
-}
-button.btn-primary {
-  background-color: var(--input-color);
-  text-shadow: 0 0 2px var(--main-font-color);
-  border: none;
-  width: 50%;
-  height: 6rem;
-  margin-top: 10px;
-  transition: 500ms;
-}
-
-button.btn-primary:hover:not(:disabled) {
-  background-color: var(--secondary-light-color);
-  transform: scale(1.02);
-}
-
-button.btn-primary:disabled {
-  background-color: var(--input-color);
-  opacity: 0.7;
-  cursor: not-allowed;
 }
 
 @media screen and (max-width: 710px) {
+
+    .filterBTN{
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+
+    .filterSection
+    {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
 
     input[type="text"]{
         width: 80% !important;
     }
 }
+
+
+h3{
+    font-size: 20px;
+}
+
+
