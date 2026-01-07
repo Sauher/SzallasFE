@@ -45,12 +45,14 @@ export class AccommodationComponent implements OnInit {
 
   //id	name	description	address	capacity	basePrice	active	createdAt	
   accommodations: Accommodation[] = [];
+  allAccommodations: Accommodation[] = [];
 
   getAccommodations() {
     this.apiService.SelectAll('accommodations').then(res => {
-      this.accommodations = res.data;
+      this.allAccommodations = res.data || [];
+      this.accommodations = [...this.allAccommodations];
 
-      this.accommodations.forEach(accommodation => {
+      this.allAccommodations.forEach(accommodation => {
         accommodation.imageUrl = `dump_acc_img.png`;
       });
     }).catch(error => {
@@ -64,17 +66,17 @@ export class AccommodationComponent implements OnInit {
 
 
   searchFilter(): void {
-    const originalAccommodations = this.accommodations;
-    const term = this.searchTerm.toLowerCase();
-    this.accommodations = this.accommodations.filter(accommodation =>
-      accommodation.name.toLowerCase().includes(term) || accommodation.address.toLowerCase().includes(term)
-
-    );
-    if (this.accommodations.length === 0) {
-      this.accommodations = originalAccommodations;
-
-      this.ngOnInit();
+    const term = (this.searchTerm || '').toLowerCase().trim();
+    if (!term) {
+      this.accommodations = [...this.allAccommodations];
+      return;
     }
+
+    this.accommodations = this.allAccommodations.filter(accommodation => {
+      const name = (accommodation.name || '') as string;
+      const address = (accommodation.address || '') as string;
+      return name.toLowerCase().includes(term) || address.toLowerCase().includes(term);
+    });
 
 
   }
