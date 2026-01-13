@@ -58,6 +58,10 @@ button.btn-primary:disabled {
     text-shadow: 0 0 2px var(--main-font-color);
     font-weight: bolder;
 }
+.saveBtn:hover{
+    background-color: var(--secondary-light-color);
+    box-shadow: 0 0 8px var(--main-bg-color);
+}
 .list-group-item{
     background-color: var(--input-color);
     color: var(--main-font-color) !important;

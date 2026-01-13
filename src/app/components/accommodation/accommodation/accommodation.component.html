@@ -61,7 +61,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger-emphasis closeModal" data-bs-dismiss="modal"><i class="bi bi-x"></i> Bezárás</button>
-                    <button type="button" class="btn btn-primary get" (click)="booking()">
+                    <button type="button" class="btn btn-primary get" *ngIf="lockedIn" (click)="booking()">
                         <i class="bi bi-house-add"></i> Foglalás
                     </button>
             </div>

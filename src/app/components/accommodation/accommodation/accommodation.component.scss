@@ -214,6 +214,11 @@ input[type="text"]{
     outline: none !important;
     box-shadow: none !important;
 }
+.get:hover{
+    background-color: var(--secondary-light-color);
+    transform: scale(1.05);
+    box-shadow: 0 0 8px var(--main-bg-color);
+}
 
 .modal-dialog {
     max-width: 800px;

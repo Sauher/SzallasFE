@@ -5,6 +5,7 @@ import { APIService } from '../../../services/api.service';
 import { MessageService } from '../../../services/message.service';
 import { Accommodation } from '../../../interfaces/accommodation';
 import { Router, RouterModule } from '@angular/router';
+import { AuthService } from '../../../services/auth.service';
 declare var bootstrap: any;
 
 @Component({
@@ -17,20 +18,21 @@ declare var bootstrap: any;
 export class AccommodationComponent implements OnInit {
 
   constructor(
+    private auth: AuthService,
     private apiService: APIService,
     private messageService: MessageService,
     private router: Router
   ) { }
 
   ngOnInit(): void {
-
+    this.lockedIn = this.auth.isLoggedUser();
     this.modal = new bootstrap.Modal('#moreInfo');
     this.getAccommodations();
 
   }
-
+  
   modal: any;
-
+  lockedIn : boolean = false;
   selectedAccommodation: Accommodation | null = null;
 
   openMoreInfo(accommodation: Accommodation): void {
