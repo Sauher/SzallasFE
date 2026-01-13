@@ -162,7 +162,8 @@ input[type="text"]{
     display: flex;
     flex-direction: row;
     align-items: center;
-    text-align: center;
+    justify-content: space-between;
+    text-align: justify;
 
 }
 
@@ -244,6 +245,8 @@ input[type="text"]{
     font-style: normal;
 
     position: relative;
+    bottom: 0;
+    right: 350px;
     bottom: -10px;
     right: -220px;
 
@@ -272,5 +275,3 @@ input[type="text"]{
 h3{
     font-size: 20px;
 }
-
-

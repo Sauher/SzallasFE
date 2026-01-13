@@ -55,7 +55,7 @@ export class NavbarComponent {
         },
         {
           name: 'Statisztika',
-          url:'stats'
+          url:'statistics'
         },
       ] : [], 
       ...(this.isOwner) ? [

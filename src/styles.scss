@@ -1,15 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
 
 :root {
-   /*
-    --main-font-color: #ecfdfd;
+    /*--main-font-color: #ecfdfd;
     --main-bg-color: #34424d;
     --secondary-color: #3d3d66;
     --secondary-light-color: #8e8dbe;
     --glass-bg: rgba(255, 255, 255, 0.12);
     --glass-bg-hover: rgba(255, 255, 255, 0.22);
-    --input-color: #d2d2fa77;
-        */
+    --input-color: #d2d2fa77;*/
+
+
+    --main-font-color: #ecfdfd;
+    --main-bg-color: #34424d;
+    --secondary-color: #351717;
+    --secondary-light-color: #929292;
+    --glass-bg: rgba(255, 255, 255, 0.12);
+    --glass-bg-hover: rgba(255, 255, 255, 0.22);
+    --input-color: #f0f0f077;
 
       --main-font-color: #ecfdfd;
     --main-bg-color: #34424d;
@@ -24,6 +31,9 @@
 body {
     padding: 0;
     background-color: var(--input-color);
+    background-image: url('../public/background.png');
+    background-size: cover;
+    background-attachment: fixed;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
